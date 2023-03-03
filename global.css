@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Didact Gothic';
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-overflow-style: none;
+    user-select: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+section::-webkit-scrollbar {
+  width: 0 !important
+  }
+
+@font-face {
+    font-family: 'Didact Gothic';
+    src: url(utils/fonts/didact-gothic.ttf);
+}
+
+.blur_On {
+    filter: blur(65px);
+}
+
+.blur_Off {
+    filter: blur(none);
+}
+
+.div_Show {
+    display: inline-block;
+}
+
+.div_Away {
+    display: none;
+}
+
+:root {
+    /* Achtergrond Kleur en Foreground */
+    --bg: var(--nord0);
+    --fg: var(--nord4);
+    --fadecol: var(--nord3);
+
+    /* Nord Theme */
+    --nord0:  #2e3440;
+    --nord1:  #3B4252 ;
+    --nord2:  #434C5E ;
+    --nord3:  #4C566A ;
+    --nord4:  #D8DEE9 ;
+    --nord5:  #E5E9F0 ;
+    --nord6:  #ECEFF4 ;
+    --nord7:  #8FBCBB ;
+    --nord8:  #88C0D0 ;
+    --nord9:  #81A1C1 ;
+    --nord10: #5E81AC ;
+    --nord11: #BF616A ;
+    --nord12: #D08770 ;
+    --nord13: #EBCB8B ;
+    --nord14: #A3BE8C ;
+    --nord15: #B48EAD ;
+}
