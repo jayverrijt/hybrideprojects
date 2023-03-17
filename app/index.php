@@ -38,7 +38,7 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
     <script src="../jsapp/phpDoNotReload.js"></script>
 </head>
 
-<body onload="initIoAppBuild(); ioDemoInit(); toggleUserAdd(); toggleUserDel(); toggleUserEdit();">
+<body onload="initIoAppBuild(); ioDemoInit(); toggleUserAdd(); toggleUserDel(); toggleUserEdit(); toggleCompanyAdd();">
     <div id="appUIbody" class="appUIBody div_Away blur_Off">
         <!-- User en Settings -->
         <div id="appUIuser" class="appUIUser">
@@ -108,6 +108,11 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                 <div class="DeleteUserBtn" onclick="toggleUserDel()">
                     <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png">
                 </div>
+                <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
+                    <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png">
+                </div>
+
+
                 <div id="d2AddUser" class="d2AddUser div_Away">
                     <div class="d2AddUserHeader">
                         <center><h3 style="color: var(--fg)">Nieuw Account</h3></center>
@@ -137,14 +142,12 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                         if($eid>0) {
                            while ($result=mysqli_fetch_assoc($sele)) {
                               echo "
-                              <button onclick='ioEditUserSwitch()'>".$result['username']."</button>
+                              <a href='../editUser.php?id=".$result['id']."'>".$result['username']."</a>
                               ";
+                               $_SESSION['editSelID'] = $result['id'];
                            }
                         }
                         ?>
-                    </div>
-                    <div id="editUser" class="d2EditSelUser div_Away">
-
                     </div>
                 </div>
                 <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
@@ -163,6 +166,12 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                            ?> 
                         </form>
                         </div>
+                </div>
+                <div id="companyAdd" class="d2DeleteUsers div_Away">
+                    <form method="post" action="../addCompany.php">
+                        <input type="text" name="company">
+                        <input type="submit" value="Submit" name="companysubmit">
+                    </form>
                 </div>
             </div>
         </div>
@@ -281,16 +290,13 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
             app.classList.add('div_Show');
         }
     </script>
-
     <script>
         function ioDemoFormNextChild1() {
             alert("Test");
         }
     </script>
-
     <script src="../jsapp/ioSettings.js"></script>
     <script src="../jsapp/d2.js"></script>
     <script src="../jsapp/editUser.js"></script>
-
 </body>
 </html>

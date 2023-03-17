@@ -337,7 +337,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     transform: translateY(50%);
-
 }
 
 .changeUserBtn {
@@ -626,4 +625,25 @@ iframe {
     border: solid 0px;
     background-color: var(--nord10);
     position: absolute;
+}
+
+.AddCompanyBtn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid 0px;
+    background: var(--nord10);
+    position: absolute;
+    bottom: 1%;
+    right: 190px;
+    cursor: pointer;
+}
+
+.addCompanyBtnStyle {
+    position: relative;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(50%);
 }

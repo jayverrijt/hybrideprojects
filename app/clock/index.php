@@ -19,12 +19,12 @@
 
 <!DOCTYPE html>
 <html>
-    <header>
+    <head>
         <link rel="stylesheet" href="../../global.css">
         <link rel="shortcut icon" href="../../utils/favicon.png">
         <link rel="stylesheet" href="clock.css"></link>
         <title>Ingeklokt als <?=$username?></title>
-    </header>
+    </head>
     <body>
         <div class="ioClockFrame">
             <div class="ioClockWarnMSG">

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<header>
+<head>
   <title>Studentenstage</title>
   <link rel="shortcut icon" href="utils/favicon.png">
   <link rel="stylesheet" href="jsapp/_jsapp_styles/ioSummonLogin.css">
   <link rel="stylesheet" href="global.css">
   <script src="jsapp/ioSummonLogin.js"></script>
-</header>
+</head>
 
 <body>
   <div class="summonLoginBox">

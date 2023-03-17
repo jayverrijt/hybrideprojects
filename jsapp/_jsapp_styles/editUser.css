@@ -1,0 +1,7 @@
+.container {
+    height: 100%;
+    width: 100%;
+    border: solid 0px;
+    position: absolute;
+    background-color: var(--bg);
+}
