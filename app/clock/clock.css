@@ -1,0 +1,84 @@
+.ioClockFrame {
+    background-color: var(--bg);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: solid 0px
+}
+
+.ioClockWarnMSG {
+    background-color: var(--bg);
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    border: solid 0px;
+    left: 0%;
+    top: 0%;
+}
+
+.ioClockFrameTextStyle {
+    font-size: 24px;
+    color: var(--fg);
+}
+
+.ioClockApplicationFrame {
+    border: solid 0px;
+    height: 90%;
+    width: 100%;
+    background-color: var(--bg);
+    left: 0%;
+    bottom: 0%;
+    position: absolute;
+}
+
+.ioClockAppTextFrame {
+    border: solid 0px;
+    height: 100%;
+    width: 60%;
+    border: solid 0px;
+    background-color: var(--bg);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.ioClockAppOutFrame {
+    border: solid 0px;
+    height: 100%;
+    width: 40%;
+    border: solid 0px;
+    background-color: var(--bg);
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+.ioWarnText {
+    position: relative;
+    top: 25%;
+}
+
+.ioLiStyle {
+    color: var(--nord7);
+    font-style: italic;
+}
+
+.ioClockOutBtn {
+    height: 200px;
+    width: 200px;
+    background-color: var(--nord10);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    cursor: pointer;
+    left: 25%;
+}
+
+.ioClockBtnPe {
+    transform: translateX(44%);
+    border: 0px solid;
+    background-color: var(--nord10);
+}

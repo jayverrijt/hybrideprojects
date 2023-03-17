@@ -65,3 +65,9 @@ input[type=password]:focus{
 #loginContent3 {
     transform: translateY(85%);
 }
+
+::placeholder {
+    font-style: italic;
+    color: var(--fg);
+
+}

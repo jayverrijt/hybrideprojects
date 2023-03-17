@@ -3,6 +3,8 @@ var imgD2e = document.getElementById('d2EditIMG');
 var imgD2d = document.getElementById('d2DeleteIMG');
 var screenD2 = document.getElementById('d2AddUser');
 var screenD2e = document.getElementById('d2EditUsers');
+var selScreen = document.getElementById('editUserSel');
+var editScreen = document.getElementById('editUser');
 var screenD2d = document.getElementById('d2DeleteUsers');
 var d2Counter0 = 0;
 var d2Counter1 = 0;
@@ -28,6 +30,11 @@ function toggleUserEdit () {
     } else if (d2Counter1 == 0)  {
         screenD2e.classList.remove('div_Show'); screenD2e.classList.add('div_Away')
         imgD2e.src = "icons/editUser.png";
+        editScreen.classList.remove('div_Show');
+        editScreen.classList.add('div_Away');
+        selScreen.classList.remove('div_Away');
+        selScreen.classList.add('div_Show');
+
         d2Counter1++;
     }
 }

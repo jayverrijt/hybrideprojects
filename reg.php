@@ -7,5 +7,5 @@
     
     $reg = "INSERT INTO users (username, password, perm, demo) VALUES ('$Username', '$Pass', '$Role', '1');";
     mysqli_query($conn, $reg);
-    header('Location:app/?signup=success');
+    header('Location: app/');
 ?>

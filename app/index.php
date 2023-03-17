@@ -15,6 +15,7 @@ $sel = mysqli_query($conn, " SELECT * FROM `users`");
 $sela = mysqli_query($conn, " SELECT * FROM `users`");
 $selb = mysqli_query($conn, " SELECT * FROM `users`");
 $seld = mysqli_query($conn, " SELECT * FROM `users`");
+$sele = mysqli_query($conn, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
 
 if (isset($_POST['ioDemoFormNextChild1'])) {
@@ -72,8 +73,26 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
         </div>
         <!-- App -->
         <div id="appUIContent">
-            <div class="appS0 div_Away" id="appS0">appS0</div>
-            <div class="appS1 div_Away" id="appS1">appS1</div>
+            <div class="appS0 div_Away" id="appS0">
+                <div class="ioClockFrame">
+                    <form method="post" action="clock/">
+                       <input type="submit"  value="Inklokken">
+                    </form>
+                </div>
+
+            </div>
+            <div class="appS1 div_Away" id="appS1">
+                <div>
+                    <form method="post" action="../submitleerdoel.php">
+                        <textarea name="leerdoel">
+
+                        </textarea>
+
+                        <input type="submit" value="Submit" name="doelsubmit">
+                    </form>
+
+                </div>
+            </div>
             <div class="appB0 div_Away" id="appB0">appB0</div>
             <div class="appB1 div_Away" id="appB1">appB1</div>
             <div class="appB2 div_Away" id="appB2">appB2</div>
@@ -112,7 +131,20 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                 </div>
                 <div id="d2EditUsers" class="d2EditUsers div_Away">
                         <center><h3 style="color: var(--fg)">Verander een Gebruiker<h3></center>
-                    <div class="d2EditSelUser">
+                    <div id='editUserSel' class="d2EditSelUser div_Show">
+                        <?php
+                        $eid=mysqli_num_rows($sele);
+                        if($eid>0) {
+                           while ($result=mysqli_fetch_assoc($sele)) {
+                              echo "
+                              <button onclick='ioEditUserSwitch()'>".$result['username']."</button>
+                              ";
+                           }
+                        }
+                        ?>
+                    </div>
+                    <div id="editUser" class="d2EditSelUser div_Away">
+
                     </div>
                 </div>
                 <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
@@ -124,7 +156,7 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                            if($did>0) {
                             while ($result=mysqli_fetch_assoc($seld)) {
                                 echo "
-                                    <center><a href='../delete.php?id=".$result['id']."' class='d2EditSelArray'>".$result["username"]."</a></center>
+                                    <center><a href='../delete.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></center>
                                 ";
                             }
                            }
@@ -255,8 +287,10 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
             alert("Test");
         }
     </script>
+
     <script src="../jsapp/ioSettings.js"></script>
     <script src="../jsapp/d2.js"></script>
+    <script src="../jsapp/editUser.js"></script>
 
 </body>
 </html>

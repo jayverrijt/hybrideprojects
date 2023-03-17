@@ -618,3 +618,12 @@ iframe {
     height: 10%;
     border: solid 2px;
 }
+
+.ioClockFrame {
+    height: 25%;
+    width: 25%;
+    border-radius: 18px;
+    border: solid 0px;
+    background-color: var(--nord10);
+    position: absolute;
+}
