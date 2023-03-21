@@ -4,56 +4,38 @@ $perm = $_SESSION["perm"];
 $demo = $_SESSION["demo"];
 $user = $_SESSION["username"];
 $id = $_SESSION["id"];
-
-
 if (empty($_SESSION['username'])) {
     header('Location:../');
 }
 include "../connection.php";
-
 $sel = mysqli_query($conn, " SELECT * FROM `users`");
 $sela = mysqli_query($conn, " SELECT * FROM `users`");
 $selb = mysqli_query($conn, " SELECT * FROM `users`");
 $seld = mysqli_query($conn, " SELECT * FROM `users`");
 $sele = mysqli_query($conn, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
-
-if (isset($_POST['ioDemoFormNextChild1'])) {
-}
 ?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>
-        <?= $_SESSION['username'] ?> · Studentenstage
-    </title>
+    <title><?= $_SESSION['username'] ?> · Studentenstage</title>
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
-    <script src="../jsapp/ioSettings.js"></script>
-    <script src="../jsapp/d2.js"></script>
-    <script src="../jsapp/ioDemoForm.js"></script>
-    <script src="../jsapp/phpDoNotReload.js"></script>
 </head>
-
 <body onload="initIoAppBuild(); ioDemoInit(); toggleUserAdd(); toggleUserDel(); toggleUserEdit(); toggleCompanyAdd();">
     <div id="appUIbody" class="appUIBody div_Away blur_Off">
-        <!-- User en Settings -->
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
                 <button class="appUIBtnStyle"
                     onclick="javascript:window.location.href='../logout.php'">Uitloggen</button>
             </div>
             <div class="btnHolderSettings">
-                <button class="appUIBtnStyle" onclick="appSettings()">Instellingen</button>
+                <button class="appUIBtnStyle" onclick="alert('Nein')">Color</button>
             </div>
         </div>
-        <!-- Menu -->
         <div id="appLogoBranding">
             <center><h1 class="mainHeader">Studenten Stage</h1></center>
-
         </div>
         <div id="appUIMenu">
             <div id="aUIm1" class="aUIm0 div_Away">
@@ -71,7 +53,6 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                 <a id="appLD2" onclick="toAppD2();">Gebruikers</a>
             </div>
         </div>
-        <!-- App -->
         <div id="appUIContent">
             <div class="appS0 div_Away" id="appS0">
                 <div class="ioClockFrame">
@@ -79,18 +60,14 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                        <input type="submit"  value="Inklokken">
                     </form>
                 </div>
-
             </div>
             <div class="appS1 div_Away" id="appS1">
                 <div>
                     <form method="post" action="../submitleerdoel.php">
                         <textarea name="leerdoel">
-
                         </textarea>
-
                         <input type="submit" value="Submit" name="doelsubmit">
                     </form>
-
                 </div>
             </div>
             <div class="appB0 div_Away" id="appB0">appB0</div>
@@ -111,8 +88,6 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                 <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
                     <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png">
                 </div>
-
-
                 <div id="d2AddUser" class="d2AddUser div_Away">
                     <div class="d2AddUserHeader">
                         <center><h3 style="color: var(--fg)">Nieuw Account</h3></center>
@@ -129,9 +104,7 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                                 <input id="d2Radio3" value="3" name="role" type="radio" required></center>
                             <br>
                             <center><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></center>
-
                         </form>
-
                     </div>
                 </div>
                 <div id="d2EditUsers" class="d2EditUsers div_Away">
@@ -143,10 +116,8 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                            while ($result=mysqli_fetch_assoc($sele)) {
                               echo "
                               <a href='../editUser.php?id=".$result['id']."'>".$result['username']."</a>
-                              ";
-                               $_SESSION['editSelID'] = $result['id'];
-                           }
-                        }
+                              "; $_SESSION['editSelID'] = $result['id'];
+                           }}
                         ?>
                     </div>
                 </div>
@@ -165,7 +136,7 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                            }
                            ?> 
                         </form>
-                        </div>
+                    </div>
                 </div>
                 <div id="companyAdd" class="d2DeleteUsers div_Away">
                     <form method="post" action="../addCompany.php">
@@ -176,20 +147,10 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
             </div>
         </div>
     </div>
-
-    <div id="appSettings" class="appSettings div_Away blur_Off">
-        <div class="appSettingsMenu">
-        </div>
-        <div class="appSettingsFrame">
-
-        </div>
-    </div>
-
-    <div id="ioDemoApp" class="ioDemoApp div_Away">
-        <div class="ioDemoWallpaper blur_On">
+        <div id="ioDemoWall" class="ioDemoWallpaper blur_On">
             <img id="ioDemoWallpaper" src="../utils/wallpapers/1.jpg">
         </div>
-        <div class="ioDemoForm div_Show blur_Off">
+        <div id="ioDemoApp" class="ioDemoForm div_Show blur_Off">
             <div class="ioDemoFormLeft">
                 <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
                     <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
@@ -220,58 +181,48 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                                <img class="ioDemoArrowFix" src="icons/right-arrow.png">
                            </button>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../jsapp/appTaskSwitch.js"></script>
     <script>
         function ioDemoInit() {
             var app = document.getElementById('appUIbody');
             var demo = document.getElementById('ioDemoApp');
+            var wall = document.getElementById('ioDemoWall');
             switch (<?= $demo ?>) {
                 case 1:
-                    // Demo Actief
-                    //console.log(app);
-                    //console.log(demo);
-                    demo.classList.remove('div_Away');
-                    demo.classList.add('div_Show')
+                    if(demo.classList.contains('div_Show')) {
+                    } else {
+                        demo.classList.remove('div_Away');
+                        demo.classList.add('div_Show');
+                    }
                     break;
                 case 2:
-                    // Demo Inactief
-                    //console.log(app);
-                    //console.log(demo);
-                    app.classList.remove('div_Away');
-                    app.classList.add('div_Show')
+                    demo.classList.remove('div_Show'); demo.classList.add('div_Away'); wall.classList.add('div_Away');
+                    app.classList.remove('div_Away');app.classList.add('div_Show')
                     break;
                 default:
                     alert("Err");
                     break;
             }
-
         }
-    </script>
-    <script>
-        // Rebuild 
         function initIoAppBuild() {
+            var menu = document.getElementById('aUIm1');
+            var s0 = document.getElementById('appS0');
+            var b0 = document.getElementById('appB0');
+            var d0 = document.getElementById('appD0');
             switch (<?= $perm ?>) {
                 case 1:
-                    var menu = document.getElementById('aUIm1');
-                    var s0 = document.getElementById('appS0');
                     menu.classList.remove('div_Away'); menu.classList.add('div_Show');
                     s0.classList.add('div_Show'); s0.classList.remove('div_Away');
                     break;
                 case 2:
-                    var menu = document.getElementById('aUIm2');
-                    var b0 = document.getElementById('appB0');
                     menu.classList.remove('div_Away'); menu.classList.add('div_Show');
                     b0.classList.add('div_Show'); b0.classList.remove('div_Away');
                     break;
                 case 3:
-                    var menu = document.getElementById('aUIm3');
-                    var d0 = document.getElementById('appD0');
                     menu.classList.remove('div_Away'); menu.classList.add('div_Show');
                     d0.classList.add('div_Show'); d0.classList.remove('div_Away');
                     break;
@@ -280,23 +231,14 @@ if (isset($_POST['ioDemoFormNextChild1'])) {
                     break;
             }
         };
-
-        function ioSkipDemo() {
-            var demo = document.getElementById('ioDemoApp');
-            var app = document.getElementById('appUIbody');
-            demo.classList.remove('div_Show');
-            demo.classList.add('div_Away');
-            app.classList.remove('div_Away');
-            app.classList.add('div_Show');
-        }
-    </script>
-    <script>
-        function ioDemoFormNextChild1() {
-            alert("Test");
-        }
     </script>
     <script src="../jsapp/ioSettings.js"></script>
     <script src="../jsapp/d2.js"></script>
     <script src="../jsapp/editUser.js"></script>
+    <script src="../jsapp/ioSettings.js"></script>
+    <script src="../jsapp/d2.js"></script>
+    <script src="../jsapp/ioDemoForm.js"></script>
+    <script src="../jsapp/phpDoNotReload.js"></script>
+    <script src="../jsapp/appTaskSwitch.js"></script>
 </body>
 </html>

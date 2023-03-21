@@ -38,6 +38,14 @@ function ioDemoFormBack(){
         b3.classList.remove('div_Show');
         b3.classList.add('div_Away');
     }
+}
 
+function ioSkipDemo () {
+    var demo = document.getElementById('ioDemoApp');
+    var app = document.getElementById('appUIbody');
 
+    demo.classList.remove('div_Show');
+    demo.classList.add('div_Away');
+    app.classList.remove('div_Away');
+    app.classList.add('div_Show');
 }

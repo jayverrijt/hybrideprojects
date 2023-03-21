@@ -10,8 +10,4 @@ $user =  $_GET['id'];
 $upd = "UPDATE users SET `username` = '$username', `password` = '$password' WHERE id = $user";
 mysqli_query($conn, $upd);
 header('Location: app/');
-
-
-
-
 ?>

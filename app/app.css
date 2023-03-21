@@ -1,20 +1,16 @@
 html {
     scrollbar-width: none;
 }
-
 body::-webkit-scrollbar{
   display: none;
 }
-
 section::-webkit-scrollbar {
   width: 0 !important
   }
-
 body {
     margin: 0;
     overflow: hidden;
 }
-
 .appUIBody {
     height: 100%;
     width: 100%;
@@ -22,7 +18,6 @@ body {
     border: solid 0px;
     position: absolute;
 }
-
 .appUIUser {
     height: 100%;
     width: 5%;
@@ -31,7 +26,6 @@ body {
     left: 0%;
     border: solid 0px;
 }
-
 #appUIMenu {
     display: inline-block;
     height: 95%;
@@ -41,7 +35,6 @@ body {
     left: 5%;
     border: solid 0px;
 }
-
 .aUIm0 {
     height: 100%;
     width: 100%;
@@ -49,7 +42,6 @@ body {
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .aUIm1 {
     height: 100%;
     width: 100%;
@@ -57,7 +49,6 @@ body {
     background-color:  var(--bg);
     border: solid 0px;
 }
-
 .aUIm2 {
     height: 100%;
     width: 100%;
@@ -65,7 +56,6 @@ body {
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .aUIm2 a {
     background-color: var(--bg);
     color: var(--fg);
@@ -74,18 +64,14 @@ body {
     border-radius: 18px;
     text-decoration: none;
 }
-
 .aUIm2 a:hover {
     background-color: var(--nord1);
 }
-
 .aUIm2 a.active {
     background-color: var(--nord1);
     color: var(--fg);
     border-radius: 18px;
 }
-
-
 .aUIm1 a {
     background-color: var(--bg);
     color: var(--fg);
@@ -94,17 +80,14 @@ body {
     border-radius: 18px;
     text-decoration: none;
 }
-
 .aUIm1 a:hover {
     background-color: var(--nord1);
 }
-
 .aUIm1 a.active {
     background-color: var(--nord1);
     color: var(--fg);
     border-radius: 18px;
 }
-
 .aUIm0 a {
     background-color: var(--bg);
     cursor: pointer;
@@ -114,19 +97,14 @@ body {
     border-radius: 18px;
     text-decoration: none;
 }
-
 .aUIm0 a:hover {
     background-color: var(--nord1);
 }
-
 .aUIm0 a.active {
     background-color: var(--nord1);
     color: var(--fg);
     border-radius: 18px;
 }
-
-
-
 .ioDemoApp {
     display: block;
     height: 100%;
@@ -135,7 +113,6 @@ body {
     background-color: var(--bg);
     position: absolute;
 }
-
 #appUIContent {
     display: inline-block;
     width: 75%;
@@ -143,10 +120,9 @@ body {
     top: 0%;
     right: 0%;
     position: absolute;
-    background-color: purple;
+    background-color: none;
     border: solid 0px;
 }
-
 .btnHolderAccount {
     height: 5%;
     width: 100%;
@@ -156,7 +132,6 @@ body {
     border: solid 0px;
     bottom: 0%;
 }
-
 .appUIBtnStyle {
     width: 5%;
     height: 100%;
@@ -168,11 +143,9 @@ body {
     font-weight: bold;
     font-size: 12px;
 }
-
 .btnHolderAccount:hover {
     background-color: var(--bg);
 }
-
 .btnHolderSettings {
     height: 5%;
     width: 100%;
@@ -182,11 +155,9 @@ body {
     border: solid 0px;
     bottom: 5%;
 }
-
 .appUIBtnStyle:hover{
     background-color: var(--bg);
 }
-
 #appLogoBranding {
     position: absolute;
     left: 5%;
@@ -196,12 +167,10 @@ body {
     border: solid 0px;
     top: 0%;
 }
-
 #logoUI {
     height: 50px;
     width: 50px;
 }
-
 #headerUI {
     font-size: 24px;
     color: var(--fg);
@@ -209,24 +178,11 @@ body {
     right: 0%;
     top: 0%;
 }
-
-.appSettings {
-    height: 50%;
-    width: 50%;
-    border: solid 0px;
-    position: absolute;
-    background-color: var(--nord10);
-    border-radius: 18px;
-    transform: translateY(50%);
-    left: 25%;
-}
-
 #ioDemoWallpaper {
     height: 100%;
     width: 100%;
     position: relative;
 }
-
 .ioDemoForm {
     display: inline-block;
     position: absolute;
@@ -239,72 +195,60 @@ body {
     border: solid 0px;
     top: 0%;
 }
-
 .appS0 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appS1 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 #appLS0 {
     cursor: pointer;
 }
-
 #appLS1 {
     cursor: pointer;
 }
-
 .appB0 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appB1 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appB2 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appD0 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appD1 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
 .appD2 {
     height: 100%;
     width: 100%;
     background-color: var(--bg);
     border: solid 0px;
 }
-
-
 .d2AddUser {
     height: 30%;
     width: 20%;
@@ -317,7 +261,6 @@ body {
     right: 1%;
     display: flex;
 }
-
 .addUserBtn {
     height: 50px;
     width: 50px;
@@ -329,7 +272,6 @@ body {
     right: 1%;
     cursor: pointer;
 }
-
 .addUserBtnStyle {
     position: relative;
     width: 50%;
@@ -338,7 +280,6 @@ body {
     margin-right: auto;
     transform: translateY(50%);
 }
-
 .changeUserBtn {
     height: 50px;
     width: 50px;
@@ -350,7 +291,6 @@ body {
     right: 70px;
     cursor: pointer;
 }
-
 .DeleteUserBtn {
     height: 50px;
     width: 50px;
@@ -362,12 +302,10 @@ body {
     right: 130px;
     cursor: pointer;
 }
-
 .styleUsers {
     color: var(--fg);
     font-style: italic;
 }
-
 .d2EditUsers {
     height: 20%;
     width: 30%;
@@ -381,7 +319,6 @@ body {
     right: 1%;
     display: flex;
 }
-
 .d2DeleteUsers {
     height: 20%;
     width: 30%;
@@ -394,7 +331,6 @@ body {
     right: 1%;
     display: flex;
 }
-
 .d2EditSelUser {
     display: flexbox;
     height: 90%;
@@ -405,39 +341,29 @@ body {
     border: solid 0px;
     background: var(--nord10);
 }
-
 .d2EditSelUser::-webkit-scrollbar {
     display: none!important;
 }
-
 .d2EditSelArray {
     height: 20%;
     border: solid 1px;
     width: 100px;
     background-color: var(--nord10);
     color: var(--fg);
-    
     border-color: var(--nord10);
 }
-
 .d2EditSelArray:hover {
     background-color: var(--nord9);
 }
-
 a:link { text-decoration: none; }
-
 a:visited { text-decoration: none; }
-
 a:hover { text-decoration: none; }
-
 a:active { text-decoration: none; }
-
 .mainHeader {
     font-size: 24px;
     color: var(--fg);
     margin-top: 2%;
 }
-
 .d2AddUserHeader {
     display: inline-block;
     border: solid 0px;
@@ -448,7 +374,6 @@ a:active { text-decoration: none; }
     top: 0%;
     left: 0%;
 }
-
 .d2AddUserForm {
     position: absolute;
     border: solid 0px;
@@ -458,7 +383,6 @@ a:active { text-decoration: none; }
     bottom: 0%;
     left: 0%;
 }
-
 .d2AddUserFormBtnStyle {
     margin-left: auto;
     margin-right: auto;
@@ -472,14 +396,12 @@ a:active { text-decoration: none; }
     font-style: italic;
     color: var(--fg);
 }
-
 .d2RadioLabel{
     display: inline-block;
     width: 50%;
     text-align: left;
     color: var(--fg);
 }
-
 .d2AddUserFormRegBtn {
     position: relative;
     border: solid 1px;
@@ -491,7 +413,6 @@ a:active { text-decoration: none; }
     border-radius:8px;
     cursor: pointer;
 }
-
 .ioDemoFormLeft {
     position: absolute;
     left: 0%;
@@ -501,7 +422,6 @@ a:active { text-decoration: none; }
     border: solid 0px;
     background-color: none;
 }
-
 .ioDemoFormRight {
     position: absolute;
     right: 0%;
@@ -511,7 +431,6 @@ a:active { text-decoration: none; }
     border: solid 0px;
     background-color: none;
 }
-
 .ioDemoFormCenter {
     position: absolute;
     left: 10%;
@@ -522,7 +441,6 @@ a:active { text-decoration: none; }
     display: flex;
     background-color: none;
 }
-
 .ioDemoFormContent {
     position: absolute;
     height: 90%;
@@ -533,7 +451,6 @@ a:active { text-decoration: none; }
     top: 5%;
     border-radius: 12px;
 }
-
 .ioDemoForm0 {
     height: 100%;
     width: 100%;
@@ -542,7 +459,6 @@ a:active { text-decoration: none; }
     position: absolute;
     background-color: none;
 }
-
 .ioDemoForm1 {
     height: 100%;
     width: 100%;
@@ -551,7 +467,6 @@ a:active { text-decoration: none; }
     position: absolute;
     background-color: none;
 }
-
 .ioDemoFormLeftBtnHolder {
     border: solid 0px;
     background-color: none;
@@ -560,7 +475,6 @@ a:active { text-decoration: none; }
     position: absolute;
     top: 40%;
 }
-
 .ioDemoFormRightBtnHolder {
     border: solid 0px;
     background-color: none;
@@ -569,22 +483,15 @@ a:active { text-decoration: none; }
     position: absolute;
     top: 40%;
 }
-
-iframe {
-    display: none;
-}
-
 .ioDemoIMG {
     height: 100%;
     width: 100%;
     position: absolute;
 }
-
 .ioDemoArrowFix {
     height: 100%;
     width: 100%;
 }
-
 .ioDemoButtonStyle {
     background-color: var(--bg);
     border: none;
@@ -592,32 +499,6 @@ iframe {
     background: transparent;
     cursor: pointer;
 }
-
-.appSettingsMenu {
-    height: 100%;
-    width: 10%;
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    border: solid 0px;
-    background-color: var(--nord10);
-}
-
-.appSettingsFrame {
-    border: solid 0px;
-    background-color: var(--nord10);
-    height: 100%;
-    width: 90%;
-    right: 0%;
-    position: absolute;
-}
-
-.appSettingsMenu {
-    width: 100%;
-    height: 10%;
-    border: solid 2px;
-}
-
 .ioClockFrame {
     height: 25%;
     width: 25%;
@@ -626,7 +507,6 @@ iframe {
     background-color: var(--nord10);
     position: absolute;
 }
-
 .AddCompanyBtn {
     height: 50px;
     width: 50px;
@@ -638,7 +518,6 @@ iframe {
     right: 190px;
     cursor: pointer;
 }
-
 .addCompanyBtnStyle {
     position: relative;
     width: 50%;

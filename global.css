@@ -12,47 +12,35 @@
     -ms-overflow-style: none;
     user-select: none;
 }
-
 html {
     scrollbar-width: none;
 }
-
 body::-webkit-scrollbar{
   display: none;
 }
-
 section::-webkit-scrollbar {
   width: 0 !important
   }
-
 @font-face {
     font-family: 'Didact Gothic';
     src: url(utils/fonts/didact-gothic.ttf);
 }
-
 .blur_On {
     filter: blur(65px);
 }
-
 .blur_Off {
     filter: blur(none);
 }
-
 .div_Show {
     display: inline-block;
 }
-
 .div_Away {
     display: none;
 }
-
 :root {
-    /* Achtergrond Kleur en Foreground */
     --bg: var(--nord0);
     --fg: var(--nord4);
     --fadecol: var(--nord3);
-
-    /* Nord Theme */
     --nord0:  #2e3440;
     --nord1:  #3B4252 ;
     --nord2:  #434C5E ;

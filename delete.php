@@ -10,9 +10,8 @@
   $runs = mysqli_query($conn,$querys);
   if ($run) {
    if($runs) {
-    var_dump($runs);
    } else {}
-   var_dump($run);
+   header('Location: app/');
   }else{
    echo "Error: ".mysqli_error($conn);
   }
