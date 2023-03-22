@@ -14,7 +14,6 @@ body {
 .appUIBody {
     height: 100%;
     width: 100%;
-    background-color: none;
     border: solid 0px;
     position: absolute;
 }
@@ -120,7 +119,6 @@ body {
     top: 0%;
     right: 0%;
     position: absolute;
-    background-color: none;
     border: solid 0px;
 }
 .btnHolderAccount {
@@ -332,7 +330,6 @@ body {
     display: flex;
 }
 .d2EditSelUser {
-    display: flexbox;
     height: 90%;
     width: 100%;
     bottom: 2%;
@@ -420,7 +417,6 @@ a:active { text-decoration: none; }
     height: 100%;
     width: 10%;
     border: solid 0px;
-    background-color: none;
 }
 .ioDemoFormRight {
     position: absolute;
@@ -429,7 +425,6 @@ a:active { text-decoration: none; }
     height: 100%;
     width: 10%;
     border: solid 0px;
-    background-color: none;
 }
 .ioDemoFormCenter {
     position: absolute;
@@ -439,7 +434,6 @@ a:active { text-decoration: none; }
     width: 80%;
     border: solid 0px;
     display: flex;
-    background-color: none;
 }
 .ioDemoFormContent {
     position: absolute;
@@ -457,7 +451,6 @@ a:active { text-decoration: none; }
     border: solid 0px;
     border-radius: 12px;
     position: absolute;
-    background-color: none;
 }
 .ioDemoForm1 {
     height: 100%;
@@ -465,11 +458,9 @@ a:active { text-decoration: none; }
     border: solid 0px;
     border-radius: 12px;
     position: absolute;
-    background-color: none;
 }
 .ioDemoFormLeftBtnHolder {
     border: solid 0px;
-    background-color: none;
     height: 20%;
     width: 100%;
     position: absolute;
@@ -477,7 +468,6 @@ a:active { text-decoration: none; }
 }
 .ioDemoFormRightBtnHolder {
     border: solid 0px;
-    background-color: none;
     height: 20%;
     width: 100%;
     position: absolute;

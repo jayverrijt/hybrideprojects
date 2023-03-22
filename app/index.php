@@ -16,7 +16,7 @@ $sele = mysqli_query($conn, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
     <title><?= $_SESSION['username'] ?> · Studentenstage</title>
     <link rel="stylesheet" href="app.css">
@@ -28,7 +28,7 @@ $row = mysqli_fetch_array($sel);
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
                 <button class="appUIBtnStyle"
-                    onclick="javascript:window.location.href='../logout.php'">Uitloggen</button>
+                    onclick="window.location.href='../logout.php'">Uitloggen</button>
             </div>
             <div class="btnHolderSettings">
                 <button class="appUIBtnStyle" onclick="alert('Nein')">Color</button>
@@ -77,16 +77,16 @@ $row = mysqli_fetch_array($sel);
             <div class="appD1 div_Away" id="appD1">appD1</div>
             <div class="appD2 div_Away" id="appD2">
                 <div class="addUserBtn" onclick="toggleUserAdd()">
-                    <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png">
+                    <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png" alt="addUser">
                 </div>
                 <div class="changeUserBtn" onclick="toggleUserEdit()">
-                    <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png">
+                    <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png" alt="editUser">
                 </div>
                 <div class="DeleteUserBtn" onclick="toggleUserDel()">
-                    <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png">
+                    <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png" alt="deleteUser">
                 </div>
                 <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
-                    <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png">
+                    <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png" alt="addComp">
                 </div>
                 <div id="d2AddUser" class="d2AddUser div_Away">
                     <div class="d2AddUserHeader">
@@ -108,7 +108,7 @@ $row = mysqli_fetch_array($sel);
                     </div>
                 </div>
                 <div id="d2EditUsers" class="d2EditUsers div_Away">
-                        <center><h3 style="color: var(--fg)">Verander een Gebruiker<h3></center>
+                        <center><p style="color: var(--fg)">Verander een Gebruiker</p></center>
                     <div id='editUserSel' class="d2EditSelUser div_Show">
                         <?php
                         $eid=mysqli_num_rows($sele);
@@ -122,7 +122,7 @@ $row = mysqli_fetch_array($sel);
                     </div>
                 </div>
                 <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
-                    <center><h3 style="color: var(--fg)">Verwijder een Gebruiker<h3></center>
+                    <center><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></center>
                     <div class="d2EditSelUser">
                         <form method="post">
                            <?php
@@ -154,7 +154,7 @@ $row = mysqli_fetch_array($sel);
             <div class="ioDemoFormLeft">
                 <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
                     <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
-                        <img class="ioDemoArrowFix" src="icons/left-arrow.png">
+                        <img class="ioDemoArrowFix" src="icons/left-arrow.png" alt="arrow-left">
                     </button>
                 </div>
             </div>
@@ -172,13 +172,13 @@ $row = mysqli_fetch_array($sel);
                 <div class="ioDemoFormRightBtnHolder">
                     <div id="ioDemoFormBtnRight0" class="ioDemoFormRightBtnHolderChild0 div_Show">
                         <button class="ioDemoButtonStyle" onclick="ioDemoFormNextChild0()">
-                            <img class="ioDemoArrowFix" src="icons/right-arrow.png">
+                            <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
                         </button>
                     </div>
                     <div id="ioDemoFormBtnRight1" class="ioDemoFormRightBtnHolderChild1 div_Away">
                         <form method="post" action="../demo.php">
                            <button class="ioDemoButtonStyle" name="ioDemoFormNextChild1">
-                               <img class="ioDemoArrowFix" src="icons/right-arrow.png">
+                               <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
                            </button>
                         </form>
                     </div>
@@ -188,9 +188,9 @@ $row = mysqli_fetch_array($sel);
     </div>
     <script>
         function ioDemoInit() {
-            var app = document.getElementById('appUIbody');
-            var demo = document.getElementById('ioDemoApp');
-            var wall = document.getElementById('ioDemoWall');
+            let app = document.getElementById('appUIbody');
+            let demo = document.getElementById('ioDemoApp');
+            let wall = document.getElementById('ioDemoWall');
             switch (<?= $demo ?>) {
                 case 1:
                     if(demo.classList.contains('div_Show')) {
@@ -209,21 +209,23 @@ $row = mysqli_fetch_array($sel);
             }
         }
         function initIoAppBuild() {
-            var menu = document.getElementById('aUIm1');
-            var s0 = document.getElementById('appS0');
-            var b0 = document.getElementById('appB0');
-            var d0 = document.getElementById('appD0');
+           let  m0 = document.getElementById('aUIm1');
+           let  m1 = document.getElementById('aUIm2');
+           let  m2 = document.getElementById('aUIm3');
+           let  s0 = document.getElementById('appS0');
+           let  b0 = document.getElementById('appB0');
+           let  d0 = document.getElementById('appD0');
             switch (<?= $perm ?>) {
                 case 1:
-                    menu.classList.remove('div_Away'); menu.classList.add('div_Show');
+                    m0.classList.remove('div_Away'); m0.classList.add('div_Show');
                     s0.classList.add('div_Show'); s0.classList.remove('div_Away');
                     break;
                 case 2:
-                    menu.classList.remove('div_Away'); menu.classList.add('div_Show');
+                    m1.classList.remove('div_Away'); m1.classList.add('div_Show');
                     b0.classList.add('div_Show'); b0.classList.remove('div_Away');
                     break;
                 case 3:
-                    menu.classList.remove('div_Away'); menu.classList.add('div_Show');
+                    m2.classList.remove('div_Away'); m2.classList.add('div_Show');
                     d0.classList.add('div_Show'); d0.classList.remove('div_Away');
                     break;
                 default:

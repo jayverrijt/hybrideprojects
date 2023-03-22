@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
   <title>Studentenstage</title>
   <link rel="shortcut icon" href="utils/favicon.png">
@@ -11,12 +11,12 @@
 <body>
   <div class="summonLoginBox">
     <div class="loginWallpaper blur_On">
-      <img id="ioSummonLoginBoxWallpaper" src="utils/wallpapers/1.jpg">
+      <img id="ioSummonLoginBoxWallpaper" src="utils/wallpapers/1.jpg" alt="background">
     </div>
     <div id="ioLoginApp" class="ioLoginApp div_Show blur_Off">
-      <h1 class="ioLoginHeader">
-        <center>Studenten Stage</center>
-      </h1>
+      <center><h1 class="ioLoginHeader">
+        tudenten Stage
+          </h1></center>
       <div class="ioLoginStyleCenter">
         <form class="ioLoginFormStyle" method="post">
           <input id="loginContent1" class="ioLoginAppBtn" type="text" name="Username" placeholder="Gebruikersnaam"
@@ -40,7 +40,6 @@ if (isset($_SESSION['username'])) {
   session_destroy();
   header("Refresh:0");
   session_start();
-} else {
 }
 ?>
 
