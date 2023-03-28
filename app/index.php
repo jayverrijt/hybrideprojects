@@ -7,12 +7,13 @@ $id = $_SESSION["id"];
 if (empty($_SESSION['username'])) {
     header('Location:../');
 }
-include "../connection.php";
-$sel = mysqli_query($conn, " SELECT * FROM `users`");
-$sela = mysqli_query($conn, " SELECT * FROM `users`");
-$selb = mysqli_query($conn, " SELECT * FROM `users`");
-$seld = mysqli_query($conn, " SELECT * FROM `users`");
-$sele = mysqli_query($conn, " SELECT * FROM `users`");
+include "../utils/php/connection.php";
+global $server;
+$sel = mysqli_query($server, " SELECT * FROM `users`");
+$sela = mysqli_query($server, " SELECT * FROM `users`");
+$selb = mysqli_query($server, " SELECT * FROM `users`");
+$seld = mysqli_query($server, " SELECT * FROM `users`");
+$sele = mysqli_query($server, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
 ?>
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ $row = mysqli_fetch_array($sel);
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
                 <button class="appUIBtnStyle"
-                    onclick="window.location.href='../logout.php'">Uitloggen</button>
+                    onclick="window.location.href='../utils/php/logout.php'">Uitloggen</button>
             </div>
             <div class="btnHolderSettings">
                 <button class="appUIBtnStyle" onclick="alert('Nein')">Color</button>
@@ -63,7 +64,7 @@ $row = mysqli_fetch_array($sel);
             </div>
             <div class="appS1 div_Away" id="appS1">
                 <div>
-                    <form method="post" action="../submitleerdoel.php">
+                    <form method="post" action="../utils/php/s_SubmitDoel.php">
                         <textarea name="leerdoel">
                         </textarea>
                         <input type="submit" value="Submit" name="doelsubmit">
@@ -93,7 +94,7 @@ $row = mysqli_fetch_array($sel);
                         <center><h3 style="color: var(--fg)">Nieuw Account</h3></center>
                     </div>
                     <div class="d2AddUserForm">
-                        <form method="post" action="../reg.php">
+                        <form method="post" action="../utils/php/d_AddUser.php">
                             <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
                             <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
                             <center><label class="d2RadioLabel" for="d2Radio1">Student</label>
@@ -115,7 +116,7 @@ $row = mysqli_fetch_array($sel);
                         if($eid>0) {
                            while ($result=mysqli_fetch_assoc($sele)) {
                               echo "
-                              <a href='../editUser.php?id=".$result['id']."'>".$result['username']."</a>
+                              <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
                               "; $_SESSION['editSelID'] = $result['id'];
                            }}
                         ?>
@@ -130,7 +131,7 @@ $row = mysqli_fetch_array($sel);
                            if($did>0) {
                             while ($result=mysqli_fetch_assoc($seld)) {
                                 echo "
-                                    <center><a href='../delete.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></center>
+                                    <center><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></center>
                                 ";
                             }
                            }
@@ -139,7 +140,7 @@ $row = mysqli_fetch_array($sel);
                     </div>
                 </div>
                 <div id="companyAdd" class="d2DeleteUsers div_Away">
-                    <form method="post" action="../addCompany.php">
+                    <form method="post" action="../utils/php/d_AddCompany.php">
                         <input type="text" name="company">
                         <input type="submit" value="Submit" name="companysubmit">
                     </form>
@@ -148,13 +149,13 @@ $row = mysqli_fetch_array($sel);
         </div>
     </div>
         <div id="ioDemoWall" class="ioDemoWallpaper blur_On">
-            <img id="ioDemoWallpaper" src="../utils/wallpapers/1.jpg">
+            <img id="ioDemoWallpaper" src="../utils/wallpapers/1.jpg" alt="Wallpaper">
         </div>
         <div id="ioDemoApp" class="ioDemoForm div_Show blur_Off">
             <div class="ioDemoFormLeft">
                 <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
                     <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
-                        <img class="ioDemoArrowFix" src="icons/left-arrow.png" alt="arrow-left">
+                        <img class="ioDemoArrowFix" src="../utils/icons/left-arrow.png" alt="arrow-left">
                     </button>
                 </div>
             </div>
@@ -172,13 +173,13 @@ $row = mysqli_fetch_array($sel);
                 <div class="ioDemoFormRightBtnHolder">
                     <div id="ioDemoFormBtnRight0" class="ioDemoFormRightBtnHolderChild0 div_Show">
                         <button class="ioDemoButtonStyle" onclick="ioDemoFormNextChild0()">
-                            <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
+                            <img class="ioDemoArrowFix" src="../utils/icons/right-arrow.png" alt="arrow-right">
                         </button>
                     </div>
                     <div id="ioDemoFormBtnRight1" class="ioDemoFormRightBtnHolderChild1 div_Away">
-                        <form method="post" action="../demo.php">
+                        <form method="post" action="../utils/php/demo.php">
                            <button class="ioDemoButtonStyle" name="ioDemoFormNextChild1">
-                               <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
+                               <img class="ioDemoArrowFix" src="../utils/icons/right-arrow.png" alt="arrow-right">
                            </button>
                         </form>
                     </div>

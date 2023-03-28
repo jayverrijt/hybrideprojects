@@ -1,5 +1,5 @@
 <?php
-    include '../../connection.php';
+    include '../../utils/php/connection.php';
     session_start();
     $id = $_SESSION['id'];
     $username = $_SESSION['username'];
@@ -18,11 +18,11 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="nl">
     <head>
         <link rel="stylesheet" href="../../global.css">
         <link rel="shortcut icon" href="../../utils/favicon.png">
-        <link rel="stylesheet" href="clock.css"></link>
+        <link rel="stylesheet" href="clock.css">
         <title>Ingeklokt als <?=$username?></title>
     </head>
     <body>
@@ -42,8 +42,8 @@
                         </center>
                 </div>
                 <div class="ioClockAppOutFrame">
-                    <form method="post"  role="form" action="submit.php">
-                    <div name="clockout" class="ioClockOutBtn">
+                    <form method="post"  role="form" action="../../utils/php/s_SubmitTime.php">
+                    <div class="ioClockOutBtn">
                         <input type="submit" name="clockout" class="ioClockFrameTextStyle ioClockBtnPe" value="Uitklokken"></input>
                     </div>
                     </form>

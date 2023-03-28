@@ -15,7 +15,7 @@
     </div>
     <div id="ioLoginApp" class="ioLoginApp div_Show blur_Off">
       <center><h1 class="ioLoginHeader">
-        tudenten Stage
+        Studenten Stage
           </h1></center>
       <div class="ioLoginStyleCenter">
         <form class="ioLoginFormStyle" method="post">
@@ -35,7 +35,8 @@
 
 <?php
 session_start();
-include "connection.php";
+include "utils/php/connection.php";
+global $server;
 if (isset($_SESSION['username'])) {
   session_destroy();
   header("Refresh:0");
@@ -48,7 +49,7 @@ if (isset($_POST['login'])) {
   $Username = $_POST['Username'];
   $Pass = $_POST['Pass'];
 
-  $sel = mysqli_query($conn, " SELECT * FROM `users` WHERE username = '$Username' AND password = '$Pass'");
+  $sel = mysqli_query($server, " SELECT * FROM `users` WHERE username = '$Username' AND password = '$Pass'");
   $row = mysqli_fetch_array($sel);
 
   if (is_array($row)) {
@@ -56,10 +57,10 @@ if (isset($_POST['login'])) {
     $_SESSION["perm"] = $row['perm'];
     $_SESSION["demo"] = $row['demo'];
     $_SESSION["id"] = $row['id'];
-  } else {
   }
 }
 
+// RW
 if (isset($_SESSION["username"])) {
   if (isset($_SESSION["username"])) {
     switch ($row['perm']) {
