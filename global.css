@@ -37,6 +37,14 @@ section::-webkit-scrollbar {
 .div_Away {
     display: none;
 }
+
+.centerTag {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    align-content: center;
+}
+
 :root {
     --bg: var(--nord0);
     --fg: var(--nord4);

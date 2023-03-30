@@ -14,6 +14,8 @@ $sela = mysqli_query($server, " SELECT * FROM `users`");
 $selb = mysqli_query($server, " SELECT * FROM `users`");
 $seld = mysqli_query($server, " SELECT * FROM `users`");
 $sele = mysqli_query($server, " SELECT * FROM `users`");
+$selt = mysqli_query($server, " SELECT * FROM `users`");
+$selcompany = mysqli_query($server, " SELECT * FROM `company`");
 $row = mysqli_fetch_array($sel);
 ?>
 <!DOCTYPE html>
@@ -36,7 +38,7 @@ $row = mysqli_fetch_array($sel);
             </div>
         </div>
         <div id="appLogoBranding">
-            <center><h1 class="mainHeader">Studenten Stage</h1></center>
+            <div class="centerTag"><h1 class="mainHeader">Studenten Stage</h1></div>
         </div>
         <div id="appUIMenu">
             <div id="aUIm1" class="aUIm0 div_Away">
@@ -65,14 +67,47 @@ $row = mysqli_fetch_array($sel);
             <div class="appS1 div_Away" id="appS1">
                 <div>
                     <form method="post" action="../utils/php/s_SubmitDoel.php">
-                        <textarea name="leerdoel">
+                        <label for="leerdoel">Leerdoel</label>
+                        <textarea id="leerdoel" name="leerdoel">
                         </textarea>
                         <input type="submit" value="Submit" name="doelsubmit">
                     </form>
                 </div>
             </div>
             <div class="appB0 div_Away" id="appB0">appB0</div>
-            <div class="appB1 div_Away" id="appB1">appB1</div>
+            <div class="appB1 div_Away" id="appB1">
+                <form action="../utils/php/b_SubmitAanwezigheid.php" method="post">
+                    <label for="bAA-MA-A">Maandag</label>
+                    <input type="radio" name="bmonday" value="Aanwezig" id="bAA-MA-A" required>
+                    <input type="radio" name="bmonday" value="Afwezig" id="bAA-MA-B" required><br>
+                    <label for="bAA-DI-A">Dinsdag</label>
+                    <input type="radio" name="bthuesday" value="Aanwezig" id="bAA-DI-A" required>
+                    <input type="radio" name="bthuesday" value="Afwezig" id="bAA-DI-B" required><br>
+                    <label for="bAA-WO-A">Woensdag</label>
+                    <input type="radio" name="bwednesday" value="Aanwezig" id="bAA-WO-A" required>
+                    <input type="radio" name="bwednesday" value="Afwezig" id="bAA-WO-B" required><br>
+                    <label for="bAA-DO-A">Donderdag</label>
+                    <input type="radio" name="bdonday" value="Aanwezig" id="bAA-DO-A" required>
+                    <input type="radio" name="bdonday" value="Afwezig" id="bAA-DO-B" required><br>
+                    <label for="bAA-VR-A">Vrijdag</label>
+                    <input type="radio" name="bfriday" value="Aanwezig" id="bAA-VR-A" required>
+                    <input type="radio" name="bfriday" value="Afwezig" id="bAA-VR-B" required><br>
+                    <?php
+                    $eid = mysqli_num_rows($selt);
+                    if ($eid > 0) {
+                        while ($result = mysqli_fetch_assoc($sele)) {
+                            echo "
+                              <label for='bselectedstudent'>".$result['username']."</label>
+                              <input type='radio' value='".$result['username']."' name='bselectedstudent' id='bselectedstudent' required><br>
+                              ";
+                        }
+                    }
+                    ?>
+                    <input type="submit" value="Submit" name="baanwezigheidsubmit">
+                </form>
+
+
+            </div>
             <div class="appB2 div_Away" id="appB2">appB2</div>
             <div class="appD0 div_Away" id="appD0">appD0</div>
             <div class="appD1 div_Away" id="appD1">appD1</div>
@@ -91,25 +126,25 @@ $row = mysqli_fetch_array($sel);
                 </div>
                 <div id="d2AddUser" class="d2AddUser div_Away">
                     <div class="d2AddUserHeader">
-                        <center><h3 style="color: var(--fg)">Nieuw Account</h3></center>
+                        <div class='centerTag'><h3 style="color: var(--fg)">Nieuw Account</h3></div>
                     </div>
                     <div class="d2AddUserForm">
                         <form method="post" action="../utils/php/d_AddUser.php">
                             <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
                             <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
-                            <center><label class="d2RadioLabel" for="d2Radio1">Student</label>
-                                <input id="d2Radio1" value="1" name="role" type="radio" required></center>
-                            <center><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
-                                <input id="d2Radio2" value="2" name="role" type="radio" required></center>
-                            <center><label class="d2RadioLabel" for="d2Radio3">Docent</label>
-                                <input id="d2Radio3" value="3" name="role" type="radio" required></center>
+                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio1">Student</label>
+                                <input id="d2Radio1" value="1" name="role" type="radio" required></div>
+                            <div class='centerTag'><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
+                                <input id="d2Radio2" value="2" name="role" type="radio" required></div>
+                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio3">Docent</label>
+                                <input id="d2Radio3" value="3" name="role" type="radio" required></div>
                             <br>
-                            <center><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></center>
+                            <div class='centerTag'><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></div>
                         </form>
                     </div>
                 </div>
                 <div id="d2EditUsers" class="d2EditUsers div_Away">
-                        <center><p style="color: var(--fg)">Verander een Gebruiker</p></center>
+                        <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
                     <div id='editUserSel' class="d2EditSelUser div_Show">
                         <?php
                         $eid=mysqli_num_rows($sele);
@@ -123,7 +158,7 @@ $row = mysqli_fetch_array($sel);
                     </div>
                 </div>
                 <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
-                    <center><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></center>
+                    <div class='centerTag'><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></div>
                     <div class="d2EditSelUser">
                         <form method="post">
                            <?php
@@ -131,7 +166,7 @@ $row = mysqli_fetch_array($sel);
                            if($did>0) {
                             while ($result=mysqli_fetch_assoc($seld)) {
                                 echo "
-                                    <center><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></center>
+                                    <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></div>
                                 ";
                             }
                            }
@@ -162,10 +197,10 @@ $row = mysqli_fetch_array($sel);
             <div class="ioDemoFormCenter">
                 <div class="ioDemoFormContent">
                     <div id="ioDemoForm0" class="ioDemoForm0 div_Show">
-                        <img class="ioDemoIMG" src="../utils/wallpapers/demo1.jpg">
+                        <img alt="demoPicture" class="ioDemoIMG" src="../utils/wallpapers/demo1.jpg">
                     </div>
                     <div id="ioDemoForm1" class="ioDemoForm1 div_Away">
-                        <img class="ioDemoIMG" src="../utils/wallpapers/demo2.jpg">
+                        <img alt='demoWallpaper' class="ioDemoIMG" src="../utils/wallpapers/demo2.jpg">
                     </div>
                 </div>
             </div>
@@ -186,7 +221,6 @@ $row = mysqli_fetch_array($sel);
                 </div>
             </div>
         </div>
-    </div>
     <script>
         function ioDemoInit() {
             let app = document.getElementById('appUIbody');
@@ -233,7 +267,7 @@ $row = mysqli_fetch_array($sel);
                     alert("U heeft geen rechten tot deze software");
                     break;
             }
-        };
+        }
     </script>
     <script src="../jsapp/ioSettings.js"></script>
     <script src="../jsapp/d2.js"></script>

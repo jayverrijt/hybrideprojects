@@ -28,18 +28,18 @@
     <body>
         <div class="ioClockFrame">
             <div class="ioClockWarnMSG">
-                <center><h1 class="ioClockFrameTextStyle">WAARSCHUWING: SLUIT DEZE TAB NIET U BENT INGEKLOKT</h1></center>
+                <div class="centerTag"><h1 class="ioClockFrameTextStyle">WAARSCHUWING: SLUIT DEZE TAB NIET U BENT INGEKLOKT</h1></div>
             </div>
             <div class="ioClockApplicationFrame">
                 <div class="ioClockAppTextFrame">
-                    <center class="ioClockFrameTextStyle ioWarnText"><p>U staat op dit moment ingeklokt <br>Als u deze tab sluit dan wordt deze stagedag als niet geldig verklaard<br><br>
+                    <div class="centerTag ioClockFrameTextStyle ioWarnText"><p>U staat op dit moment ingeklokt <br>Als u deze tab sluit dan wordt deze stagedag als niet geldig verklaard<br><br>
                             Om dit te voorkomen doe het volgende:
                         <br>
                         </p>
                             <li class="ioLiStyle">Hou uw computer aan de oplader</li>
                             <li class="ioLiStyle">Klok niet in op een telefoon</li>
                             <li class="ioLiStyle">Sluit de browsertab niet</li>
-                        </center>
+                        </div>
                 </div>
                 <div class="ioClockAppOutFrame">
                     <form method="post"  role="form" action="../../utils/php/s_SubmitTime.php">

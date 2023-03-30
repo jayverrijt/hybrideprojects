@@ -14,9 +14,9 @@
       <img id="ioSummonLoginBoxWallpaper" src="utils/wallpapers/1.jpg" alt="background">
     </div>
     <div id="ioLoginApp" class="ioLoginApp div_Show blur_Off">
-      <center><h1 class="ioLoginHeader">
+      <div class="centerTag"><h1 class="ioLoginHeader">
         Studenten Stage
-          </h1></center>
+          </h1></div>
       <div class="ioLoginStyleCenter">
         <form class="ioLoginFormStyle" method="post">
           <input id="loginContent1" class="ioLoginAppBtn" type="text" name="Username" placeholder="Gebruikersnaam"
