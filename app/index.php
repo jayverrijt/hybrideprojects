@@ -15,8 +15,12 @@ $selb = mysqli_query($server, " SELECT * FROM `users`");
 $seld = mysqli_query($server, " SELECT * FROM `users`");
 $sele = mysqli_query($server, " SELECT * FROM `users`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
+$selo = mysqli_query($server, " SELECT * FROM `users`");
 $selcompany = mysqli_query($server, " SELECT * FROM `company`");
+$selt = mysqli_query($server, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
+$WerktijdWeek = date('W');
+global $WerktijdWeek;
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -74,42 +78,127 @@ $row = mysqli_fetch_array($sel);
                     </form>
                 </div>
             </div>
-            <div class="appB0 div_Away" id="appB0">appB0</div>
+            <div class="appB0 div_Away" id="appB0"></div>
             <div class="appB1 div_Away" id="appB1">
-                <form action="../utils/php/b_SubmitAanwezigheid.php" method="post">
-                    <label for="bAA-MA-A">Maandag</label>
-                    <input type="radio" name="bmonday" value="Aanwezig" id="bAA-MA-A" required>
-                    <input type="radio" name="bmonday" value="Afwezig" id="bAA-MA-B" required><br>
-                    <label for="bAA-DI-A">Dinsdag</label>
-                    <input type="radio" name="bthuesday" value="Aanwezig" id="bAA-DI-A" required>
-                    <input type="radio" name="bthuesday" value="Afwezig" id="bAA-DI-B" required><br>
-                    <label for="bAA-WO-A">Woensdag</label>
-                    <input type="radio" name="bwednesday" value="Aanwezig" id="bAA-WO-A" required>
-                    <input type="radio" name="bwednesday" value="Afwezig" id="bAA-WO-B" required><br>
-                    <label for="bAA-DO-A">Donderdag</label>
-                    <input type="radio" name="bdonday" value="Aanwezig" id="bAA-DO-A" required>
-                    <input type="radio" name="bdonday" value="Afwezig" id="bAA-DO-B" required><br>
-                    <label for="bAA-VR-A">Vrijdag</label>
-                    <input type="radio" name="bfriday" value="Aanwezig" id="bAA-VR-A" required>
-                    <input type="radio" name="bfriday" value="Afwezig" id="bAA-VR-B" required><br>
-                    <?php
-                    $eid = mysqli_num_rows($selt);
-                    if ($eid > 0) {
-                        while ($result = mysqli_fetch_assoc($sele)) {
-                            echo "
-                              <label for='bselectedstudent'>".$result['username']."</label>
-                              <input type='radio' value='".$result['username']."' name='bselectedstudent' id='bselectedstudent' required><br>
-                              ";
-                        }
-                    }
-                    ?>
-                    <input type="submit" value="Submit" name="baanwezigheidsubmit">
-                </form>
-
-
+                <div class="div_Show" id="appB1Time">
+                     <form action="../utils/php/b_SubmitAanwezigheid.php" method="post">
+                         <label for="bAA-MA-A">Maandag</label>
+                         <input type="radio" name="bmonday" value="Aanwezig" id="bAA-MA-A" required>
+                         <input type="radio" name="bmonday" value="Afwezig" id="bAA-MA-B" required><br>
+                         <label for="bAA-DI-A">Dinsdag</label>
+                         <input type="radio" name="bthuesday" value="Aanwezig" id="bAA-DI-A" required>
+                         <input type="radio" name="bthuesday" value="Afwezig" id="bAA-DI-B" required><br>
+                         <label for="bAA-WO-A">Woensdag</label>
+                         <input type="radio" name="bwednesday" value="Aanwezig" id="bAA-WO-A" required>
+                         <input type="radio" name="bwednesday" value="Afwezig" id="bAA-WO-B" required><br>
+                         <label for="bAA-DO-A">Donderdag</label>
+                         <input type="radio" name="bdonday" value="Aanwezig" id="bAA-DO-A" required>
+                         <input type="radio" name="bdonday" value="Afwezig" id="bAA-DO-B" required><br>
+                         <label for="bAA-VR-A">Vrijdag</label>
+                         <input type="radio" name="bfriday" value="Aanwezig" id="bAA-VR-A" required>
+                         <input type="radio" name="bfriday" value="Afwezig" id="bAA-VR-B" required><br>
+                         <?php
+                         $eid = mysqli_num_rows($selt);
+                         if ($eid > 0) {
+                             while ($result = mysqli_fetch_assoc($sele)) {
+                                 echo "
+                                   <label for='bselectedstudent'>".$result['username']."</label>
+                                   <input type='radio' value='".$result['username']."' name='bselectedstudent' id='bselectedstudent' required><br>
+                                   ";
+                             }
+                         }
+                         ?>
+                         <input type="submit" value="Submit" name="baanwezigheidsubmit">
+                     </form>
+                </div>
             </div>
             <div class="appB2 div_Away" id="appB2">appB2</div>
-            <div class="appD0 div_Away" id="appD0">appD0</div>
+            <div class="appD0 div_Away" id="appD0">
+                <div class="div_Show" id="dwerktijdsel">
+                    <form method="post" action="./index.php">
+                     <?php
+                      $tid = mysqli_num_rows($selt);
+                      if($tid>0) {
+                          while($result=mysqli_fetch_assoc($selt)) {
+                              echo "
+                                  <input name='dstudent' type='submit' value='".$result['username']."'>
+                              ";
+                          }
+                      }
+                      ?>
+                    </form>
+                </div>
+                <div class="div_Away" id="dwerktijduser">
+                    <form action="../utils/php/d_SubmitWorkhrs.php" method="post">
+                        <div class="ioD0Workhours">
+                            <div class="ioWeekControl">
+                                <p class="ioWeekNumber centerTag"><?php echo "Week ".$WerktijdWeek.":";?></p>
+                            </div>
+                            <div class="ioWorkHours">
+                                <div class="ioWorkHours-Days">
+                                    <div id="ioWorkDayMon">
+                                        <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Maandag</p>
+                                    </div>
+                                    <div id="ioWorkDayThu">
+                                        <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Dinsdag</p>
+                                    </div>
+                                    <div id="ioWorkDayWed">
+                                        <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Woensdag</p>
+                                    </div>
+                                    <div id="ioWorkDayThr">
+                                        <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Donderdag</p>
+                                    </div>
+                                    <div id="ioWorkDayFri">
+                                        <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Vrijdag</p>
+                                    </div>
+                                </div>
+                                <div class="ioWorkHours-Input">
+                                    <div id="ioWorkDayMonInput">
+                                        <input name="valMonStart" type="time" class="centerTag" required>
+                                        <input name="valMonEnd" type="time" class="centerTag" required>
+                                    </div>
+                                    <div id="ioWorkDayThuInput">
+                                        <input name="valThuStart" type="time" class="centerTag" required>
+                                        <input name="valThuEnd" type="time" class="centerTag" required>
+                                    </div>
+                                    <div id="ioWorkDayWedInput">
+                                        <input name="valWedStart" type="time" class="centerTag" required>
+                                        <input name="valWedEnd" type="time" class="centerTag" required>
+                                    </div>
+                                    <div id="ioWorkDayThrInput">
+                                        <input name="valThrStart" type="time" class="centerTag" required>
+                                        <input name="valThrEnd" type="time" class="centerTag" required>
+                                    </div>
+                                    <div id="ioWorkDayFriInput">
+                                        <input name="valFriStart" type="time" class="centerTag" required>
+                                        <input name="valFriEnd" type="time" class="centerTag" required>
+                                    </div>
+                                </div>
+                                <div class="ioWorkhrsSubmit">
+                                    <input name="Workhrs" type="submit" value="Bevestigen" class="ioWorkhrsSubmitBtn centerTag">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <?php
+            if(isset($_POST['dstudent'])) {
+                $_SESSION['dapp0student'] = $_POST['dstudent'];
+            }
+
+            if(isset($_SESSION['dapp0student'])) {
+                echo "<script>
+                                var sel = document.getElementById('dwerktijdsel');
+                                var use = document.getElementById('dwerktijduser');
+                                
+                                    sel.classList.remove('div_Show');
+                                    sel.classList.add('div_Away');
+                                    use.classList.remove('div_Away');
+                                    use.classList.add('div_Show');
+                            </script>";
+            }
+            ?>
+            </div>
             <div class="appD1 div_Away" id="appD1">appD1</div>
             <div class="appD2 div_Away" id="appD2">
                 <div class="addUserBtn" onclick="toggleUserAdd()">
@@ -147,9 +236,9 @@ $row = mysqli_fetch_array($sel);
                         <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
                     <div id='editUserSel' class="d2EditSelUser div_Show">
                         <?php
-                        $eid=mysqli_num_rows($sele);
+                        $eid=mysqli_num_rows($selo);
                         if($eid>0) {
-                           while ($result=mysqli_fetch_assoc($sele)) {
+                           while ($result=mysqli_fetch_assoc($selo)) {
                               echo "
                               <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
                               "; $_SESSION['editSelID'] = $result['id'];
@@ -190,7 +279,7 @@ $row = mysqli_fetch_array($sel);
             <div class="ioDemoFormLeft">
                 <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
                     <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
-                        <img class="ioDemoArrowFix" src="../utils/icons/left-arrow.png" alt="arrow-left">
+                        <img class="ioDemoArrowFix" src="icons/left-arrow.png" alt="arrow-left">
                     </button>
                 </div>
             </div>
@@ -208,13 +297,13 @@ $row = mysqli_fetch_array($sel);
                 <div class="ioDemoFormRightBtnHolder">
                     <div id="ioDemoFormBtnRight0" class="ioDemoFormRightBtnHolderChild0 div_Show">
                         <button class="ioDemoButtonStyle" onclick="ioDemoFormNextChild0()">
-                            <img class="ioDemoArrowFix" src="../utils/icons/right-arrow.png" alt="arrow-right">
+                            <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
                         </button>
                     </div>
                     <div id="ioDemoFormBtnRight1" class="ioDemoFormRightBtnHolderChild1 div_Away">
                         <form method="post" action="../utils/php/demo.php">
                            <button class="ioDemoButtonStyle" name="ioDemoFormNextChild1">
-                               <img class="ioDemoArrowFix" src="../utils/icons/right-arrow.png" alt="arrow-right">
+                               <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
                            </button>
                         </form>
                     </div>

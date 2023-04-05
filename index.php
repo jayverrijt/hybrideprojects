@@ -74,7 +74,7 @@ if (isset($_SESSION["username"])) {
         header('Location:app/');
         break;
       default:
-        echo "Unkown Error";
+        echo "Unknown Error";
     }
   }
 }

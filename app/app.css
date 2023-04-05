@@ -516,3 +516,182 @@ a:active { text-decoration: none; }
     margin-right: auto;
     transform: translateY(50%);
 }
+
+.ioD0Workhours {
+    position: absolute;
+    height: 55%;
+    width: 20%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    border-radius:  22px;
+}
+
+.ioWeekControl {
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    border: solid 0px;
+    background-color: var(--fg);
+    left: 0%;
+    top: 0%;
+}
+
+.ioWeekNumber {
+    color: var(--fg);
+    background-color: var(--nord10);
+    height: 100%;
+}
+
+.ioWorkHours {
+    height: 90%;
+    width: 100%;
+    background-color: var(--nord10);
+    border: solid 0px;
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+}
+
+.ioWorkHours-Days {
+    height: 90%;
+    width: 60%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    position: absolute;
+    left: 0%;
+    display: inline-block;
+    top: 0%;
+}
+
+.ioWorkHours-Input {
+    height: 90%;
+    width: 40%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    position: absolute;
+    float: right;
+    right: 0%;
+    display: inline-block;
+    top: 0%;
+}
+
+#ioWorkDayMon {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 0%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayThu {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 20%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayWed {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 40%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayThr {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 60%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayFri {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 80%;
+    background-color: var(--nord10);
+}
+
+
+#ioWorkDayMonInput {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 0%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayThuInput {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 20%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayWedInput {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 40%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayThrInput {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 60%;
+    background-color: var(--nord10);
+}
+
+#ioWorkDayFriInput {
+    height: 20%;
+    width: 100%;
+    border: solid 0px;
+    display: inline-block;
+    left: 0%;
+    top: 80%;
+    background-color: var(--nord10);
+}
+
+.ioWorkhrsSubmit {
+    height: 10%;
+    width: 100%;
+    bottom: 0%;
+    position: absolute;
+    left: 0%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    display: inline-block;
+}
+
+.ioWorkhrsSubmitBtn {
+    position: relative;
+    width: 80%;
+    background-color: var(--bg);
+    border: solid 0px;
+    border-radius: 12px;
+    color: var(--fg);
+}
