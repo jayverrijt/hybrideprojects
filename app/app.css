@@ -695,3 +695,18 @@ a:active { text-decoration: none; }
     border-radius: 12px;
     color: var(--fg);
 }
+
+.appB0Fix {
+    color: var(--fg);
+}
+
+#dLeerdoelSelected, #dFeedbackSelected {
+    border: solid 0px;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0%;
+}
+
+#dLeerdoelSelected {left: 0%;}
+#dFeedbackSelected {right: 0%;}

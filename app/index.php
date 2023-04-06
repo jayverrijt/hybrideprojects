@@ -16,6 +16,11 @@ $seld = mysqli_query($server, " SELECT * FROM `users`");
 $sele = mysqli_query($server, " SELECT * FROM `users`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
 $selo = mysqli_query($server, " SELECT * FROM `users`");
+$selp = mysqli_query($server, " SELECT * FROM `leerdoel`");
+$selx = mysqli_query($server, " SELECT * FROM `users`");
+$selx = mysqli_query($server, " SELECT * FROM `users`");
+$sely = mysqli_query($server, " SELECT * FROM `werktijden`");
+$selz = mysqli_query($server, " SELECT * FROM `users`");
 $selcompany = mysqli_query($server, " SELECT * FROM `company`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
 $row = mysqli_fetch_array($sel);
@@ -78,7 +83,102 @@ global $WerktijdWeek;
                     </form>
                 </div>
             </div>
-            <div class="appB0 div_Away" id="appB0"></div>
+            <div class="appB0 div_Away" id="appB0">
+                <div class="div_Show" id="appD0studentsel">
+                    <form method="post">
+                        <?php
+                        $tid = mysqli_num_rows($sely);
+                        if($tid>0) {
+                            while($result=mysqli_fetch_assoc($sely)) {
+                                echo "
+                                  <input name='bselapp0' type='submit' value='".$result['student']."'>
+                              ";
+                            }
+                        }
+                        ?>
+                    </form>
+                </div>
+                <div class="div_Away" id="appD0werktijd">
+                    <div class="ioD0Workhours">
+                        <div class="ioWeekControl">
+                            <p class="ioWeekNumber centerTag"><?php echo "Week ".$WerktijdWeek.":";?></p>
+                        </div>
+                        <div class="ioWorkHours">
+                            <div class="ioWorkHours-Days">
+                                <div id="ioWorkDayMon">
+                                    <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Maandag</p>
+                                </div>
+                                <div id="ioWorkDayThu">
+                                    <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Dinsdag</p>
+                                </div>
+                                <div id="ioWorkDayWed">
+                                    <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Woensdag</p>
+                                </div>
+                                <div id="ioWorkDayThr">
+                                    <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Donderdag</p>
+                                </div>
+                                <div id="ioWorkDayFri">
+                                    <p class="centerTag" style="transform: translateY(50%); color: var(--fg)">Vrijdag</p>
+                                </div>
+                            </div>
+                            <div class="ioWorkHours-Input">
+                                <?php
+                                $BnulStudent = $_SESSION['bselapp0'];
+                                $selyy = mysqli_query($server, " SELECT * FROM `werktijden` WHERE student = '$BnulStudent'");
+                                $tid = mysqli_num_rows($selyy);
+                                if($tid>0) {
+                                    while($result=mysqli_fetch_assoc($selyy)) {
+                                echo "
+                                   <div id='ioWorkDayMonInput'>
+                                       <p class='centerTag appB0Fix'>".$result['valMonStart']."</p>
+                                       <p class='centerTag appB0Fix'>".$result['valMonEnd']."</p>
+                                   </div>
+                                   <div id=ioWorkDayThuInput>
+                                       <p class='centerTag appB0Fix'>".$result['valThuStart']."</p>
+                                       <p class='centerTag appB0Fix'>".$result['valThuEnd']."</p>
+                                   </div>
+                                   <div id=ioWorkDayWedInput>
+                                       <p class='centerTag appB0Fix'>".$result['valWedStart']."</p>
+                                       <p class='centerTag appB0Fix'>".$result['valWedEnd']."</p>
+                                   </div>
+                                   <div id=ioWorkDayThrInput>
+                                       <p class='centerTag appB0Fix'>".$result['valThrStart']."</p>
+                                       <p class='centerTag appB0Fix'>".$result['valThrEnd']."</p>
+                                   </div>
+                                   <div id=ioWorkDayFriInput>
+                                       <p class='centerTag appB0Fix'>".$result['valFriStart']."</p>
+                                       <p class='centerTag appB0Fix'>".$result['valFriEnd']."</p>
+                                   </div>
+                                ";
+                                }
+                                }
+                                ?>
+                            </div>
+                            <div class="ioWorkhrsSubmit">
+                            </div>
+                        </div>
+                </div>
+
+                <?php
+                if(isset($_POST['bselapp0'])) {
+                    $_SESSION['bselapp0'] = $_POST['bselapp0'];
+                }
+
+                if(isset($_SESSION['bselapp0'])) {
+                    echo "
+                        <script>
+                            var one = document.getElementById('appD0studentsel'); 
+                            var two = document.getElementById('appD0werktijd'); 
+                            one.classList.remove('div_Show');
+                            one.classList.add('div_Away');
+                            two.classList.remove('div_Away');
+                            two.classList.add('div_Show');
+                        </script>
+                    ";
+                }
+                ?>
+            </div>
+            </div>
             <div class="appB1 div_Away" id="appB1">
                 <div class="div_Show" id="appB1Time">
                      <form action="../utils/php/b_SubmitAanwezigheid.php" method="post">
@@ -112,7 +212,49 @@ global $WerktijdWeek;
                      </form>
                 </div>
             </div>
-            <div class="appB2 div_Away" id="appB2">appB2</div>
+            <div class="appB2 div_Away" id="appB2">
+                <div class="div_Show" id="appB2UserSel">
+                    <form method="post">
+                        <?php
+                        $tid = mysqli_num_rows($selx);
+                        if($tid>0) {
+                            while($result=mysqli_fetch_assoc($selx)) {
+                                echo "
+                                  <input name='beditsel' type='submit' value='".$result['username']."'>
+                              ";
+                            }
+                        }
+                        ?>
+                    </form>
+                </div>
+                <div class="div_Away" id="appB2Feedback">
+                    <form method="post" action="../utils/php/b_SubmitFeedback.php">
+                        <textarea name="feedback">
+
+                        </textarea>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+                <?php
+                    if(isset($_POST['beditsel'])) {
+                        $_SESSION['appB2user'] = $_POST['beditsel'];
+                    }
+
+                    if(isset($_SESSION['appB2user'])) {
+                        echo "
+                            <script>
+                                var one = document.getElementById('appB2UserSel');
+                                var two = document.getElementById('appB2Feedback');
+                                
+                                one.classList.remove('div_Show');
+                                one.classList.add('div_Away');
+                                two.classList.remove('div_Away');
+                                two.classList.add('div_Show');
+                            </script>
+                        ";
+                    }
+                ?>
+            </div>
             <div class="appD0 div_Away" id="appD0">
                 <div class="div_Show" id="dwerktijdsel">
                     <form method="post" action="./index.php">
@@ -199,117 +341,174 @@ global $WerktijdWeek;
             }
             ?>
             </div>
-            <div class="appD1 div_Away" id="appD1">appD1</div>
-            <div class="appD2 div_Away" id="appD2">
-                <div class="addUserBtn" onclick="toggleUserAdd()">
-                    <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png" alt="addUser">
-                </div>
-                <div class="changeUserBtn" onclick="toggleUserEdit()">
-                    <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png" alt="editUser">
-                </div>
-                <div class="DeleteUserBtn" onclick="toggleUserDel()">
-                    <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png" alt="deleteUser">
-                </div>
-                <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
-                    <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png" alt="addComp">
-                </div>
-                <div id="d2AddUser" class="d2AddUser div_Away">
-                    <div class="d2AddUserHeader">
-                        <div class='centerTag'><h3 style="color: var(--fg)">Nieuw Account</h3></div>
-                    </div>
-                    <div class="d2AddUserForm">
-                        <form method="post" action="../utils/php/d_AddUser.php">
-                            <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
-                            <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
-                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio1">Student</label>
-                                <input id="d2Radio1" value="1" name="role" type="radio" required></div>
-                            <div class='centerTag'><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
-                                <input id="d2Radio2" value="2" name="role" type="radio" required></div>
-                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio3">Docent</label>
-                                <input id="d2Radio3" value="3" name="role" type="radio" required></div>
-                            <br>
-                            <div class='centerTag'><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></div>
-                        </form>
-                    </div>
-                </div>
-                <div id="d2EditUsers" class="d2EditUsers div_Away">
-                        <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
-                    <div id='editUserSel' class="d2EditSelUser div_Show">
+            <div class="appD1 div_Away" id="appD1">
+                <div id="dFeedbackuser" class="div_Show">
+                    <form method="post" action="./index.php">
                         <?php
-                        $eid=mysqli_num_rows($selo);
-                        if($eid>0) {
-                           while ($result=mysqli_fetch_assoc($selo)) {
-                              echo "
-                              <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
-                              "; $_SESSION['editSelID'] = $result['id'];
-                           }}
-                        ?>
-                    </div>
-                </div>
-                <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
-                    <div class='centerTag'><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></div>
-                    <div class="d2EditSelUser">
-                        <form method="post">
-                           <?php
-                           $did=mysqli_num_rows($seld);
-                           if($did>0) {
-                            while ($result=mysqli_fetch_assoc($seld)) {
+                        $tid = mysqli_num_rows($selp);
+                        if($tid>0) {
+                            while($result=mysqli_fetch_assoc($selp)) {
                                 echo "
-                                    <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></div>
-                                ";
+                                  <input name='dfeedback' type='submit' value='".$result['student']."'>
+                              ";
                             }
-                           }
-                           ?> 
+                        }
+                        ?>
+                    </form>
+                </div>
+                <?php
+                if(isset($_POST['dfeedback'])) {
+                    $_SESSION['dapp1feedback'] = $_POST['dfeedback'];
+                    $D1Student = $_SESSION['dapp1feedback'];
+
+                    // Retrieving for Dfeedback
+                    $cmd = "SELECT * FROM `leerdoel` WHERE `student` = '$D1Student'";
+                    $selpp = mysqli_query($server, $cmd);
+                    $row = mysqli_fetch_array($selpp);
+                    $_SESSION['d1releerdoel'] = $row['leerdoel'];
+                    $_SESSION['d1refeedback'] = $row['feedback'];
+                }
+                ?>
+                <div id="dFeedback" class="div_Away">
+                    <div class="div_Show" id="dLeerdoelSelected">
+                        <form method="post" action="./index.php">
+                            <?php
+                            $leerdoel = $_SESSION['d1releerdoel'];
+                            echo "<p>$leerdoel</p>"
+                            ?>
+                        </form>
+                    </div>
+                    <div class="div_Show" id="dFeedbackSelected">
+                        <form method="post" action="./index.php">
+                            <?php
+                            $feedback = $_SESSION['d1refeedback'];
+                            echo "<p>$feedback</p>"
+                            ?>
                         </form>
                     </div>
                 </div>
-                <div id="companyAdd" class="d2DeleteUsers div_Away">
-                    <form method="post" action="../utils/php/d_AddCompany.php">
-                        <input type="text" name="company">
-                        <input type="submit" value="Submit" name="companysubmit">
+                <?php
+                if(isset($_SESSION['dapp1feedback'])) {
+                    echo "<script>
+                                var sel = document.getElementById('dFeedbackuser');
+                                var use = document.getElementById('dFeedback');
+                                
+                                    sel.classList.remove('div_Show');
+                                    sel.classList.add('div_Away');
+                                    use.classList.remove('div_Away');
+                                    use.classList.add('div_Show');
+                            </script>";
+                }
+                ?>
+            </div>
+    <div class="appD2 div_Away" id="appD2">
+        <div class="addUserBtn" onclick="toggleUserAdd()">
+            <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png" alt="addUser">
+        </div>
+        <div class="changeUserBtn" onclick="toggleUserEdit()">
+            <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png" alt="editUser">
+        </div>
+        <div class="DeleteUserBtn" onclick="toggleUserDel()">
+            <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png" alt="deleteUser">
+        </div>
+        <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
+            <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png" alt="addComp">
+        </div>
+        <div id="d2AddUser" class="d2AddUser div_Away">
+            <div class="d2AddUserHeader">
+                <div class='centerTag'><h3 style="color: var(--fg)">Nieuw Account</h3></div>
+            </div>
+            <div class="d2AddUserForm">
+                <form method="post" action="../utils/php/d_AddUser.php">
+                    <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
+                    <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
+                    <div class='centerTag'><label class="d2RadioLabel" for="d2Radio1">Student</label>
+                        <input id="d2Radio1" value="1" name="role" type="radio" required></div>
+                    <div class='centerTag'><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
+                        <input id="d2Radio2" value="2" name="role" type="radio" required></div>
+                    <div class='centerTag'><label class="d2RadioLabel" for="d2Radio3">Docent</label>
+                        <input id="d2Radio3" value="3" name="role" type="radio" required></div>
+                    <br>
+                    <div class='centerTag'><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></div>
+                </form>
+            </div>
+        </div>
+        <div id="d2EditUsers" class="d2EditUsers div_Away">
+                <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
+            <div id='editUserSel' class="d2EditSelUser div_Show">
+                <?php
+                $eid=mysqli_num_rows($selo);
+                if($eid>0) {
+                   while ($result=mysqli_fetch_assoc($selo)) {
+                      echo "
+                      <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
+                      "; $_SESSION['editSelID'] = $result['id'];
+                   }}
+                ?>
+            </div>
+        </div>
+        <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
+            <div class='centerTag'><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></div>
+            <div class="d2EditSelUser">
+                <form method="post">
+                   <?php
+                   $did=mysqli_num_rows($seld);
+                   if($did>0) {
+                    while ($result=mysqli_fetch_assoc($seld)) {
+                        echo "
+                            <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></div>
+                        ";
+                    }
+                   }
+                   ?>
+                </form>
+            </div>
+            <div id="companyAdd" class="d2DeleteUsers div_Away">
+                <form method="post" action="../utils/php/d_AddCompany.php">
+                    <input type="text" name="company">
+                    <input type="submit" value="Submit" name="companysubmit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="ioDemoWall" class="ioDemoWallpaper blur_On">
+        <img id="ioDemoWallpaper" src="../utils/wallpapers/1.jpg" alt="Wallpaper">
+    </div>
+    <div id="ioDemoApp" class="ioDemoForm div_Show blur_Off">
+        <div class="ioDemoFormLeft">
+            <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
+                <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
+                    <img class="ioDemoArrowFix" src="icons/left-arrow.png" alt="arrow-left">
+                </button>
+            </div>
+        </div>
+        <div class="ioDemoFormCenter">
+            <div class="ioDemoFormContent">
+                <div id="ioDemoForm0" class="ioDemoForm0 div_Show">
+                    <img alt="demoPicture" class="ioDemoIMG" src="../utils/wallpapers/demo1.jpg">
+                </div>
+                <div id="ioDemoForm1" class="ioDemoForm1 div_Away">
+                    <img alt='demoWallpaper' class="ioDemoIMG" src="../utils/wallpapers/demo2.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="ioDemoFormRight">
+            <div class="ioDemoFormRightBtnHolder">
+                <div id="ioDemoFormBtnRight0" class="ioDemoFormRightBtnHolderChild0 div_Show">
+                    <button class="ioDemoButtonStyle" onclick="ioDemoFormNextChild0()">
+                        <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
+                    </button>
+                </div>
+                <div id="ioDemoFormBtnRight1" class="ioDemoFormRightBtnHolderChild1 div_Away">
+                    <form method="post" action="../utils/php/demo.php">
+                       <button class="ioDemoButtonStyle" name="ioDemoFormNextChild1">
+                           <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
+                       </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-        <div id="ioDemoWall" class="ioDemoWallpaper blur_On">
-            <img id="ioDemoWallpaper" src="../utils/wallpapers/1.jpg" alt="Wallpaper">
-        </div>
-        <div id="ioDemoApp" class="ioDemoForm div_Show blur_Off">
-            <div class="ioDemoFormLeft">
-                <div id='ioDemoFormLeftBtn' class="ioDemoFormLeftBtnHolder div_Away">
-                    <button class="ioDemoButtonStyle" onclick='ioDemoFormBack()'>
-                        <img class="ioDemoArrowFix" src="icons/left-arrow.png" alt="arrow-left">
-                    </button>
-                </div>
-            </div>
-            <div class="ioDemoFormCenter">
-                <div class="ioDemoFormContent">
-                    <div id="ioDemoForm0" class="ioDemoForm0 div_Show">
-                        <img alt="demoPicture" class="ioDemoIMG" src="../utils/wallpapers/demo1.jpg">
-                    </div>
-                    <div id="ioDemoForm1" class="ioDemoForm1 div_Away">
-                        <img alt='demoWallpaper' class="ioDemoIMG" src="../utils/wallpapers/demo2.jpg">
-                    </div>
-                </div>
-            </div>
-            <div class="ioDemoFormRight">
-                <div class="ioDemoFormRightBtnHolder">
-                    <div id="ioDemoFormBtnRight0" class="ioDemoFormRightBtnHolderChild0 div_Show">
-                        <button class="ioDemoButtonStyle" onclick="ioDemoFormNextChild0()">
-                            <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
-                        </button>
-                    </div>
-                    <div id="ioDemoFormBtnRight1" class="ioDemoFormRightBtnHolderChild1 div_Away">
-                        <form method="post" action="../utils/php/demo.php">
-                           <button class="ioDemoButtonStyle" name="ioDemoFormNextChild1">
-                               <img class="ioDemoArrowFix" src="icons/right-arrow.png" alt="arrow-right">
-                           </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     <script>
         function ioDemoInit() {
             let app = document.getElementById('appUIbody');
