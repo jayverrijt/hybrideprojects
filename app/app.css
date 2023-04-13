@@ -205,10 +205,20 @@ body {
     background-color: var(--bg);
     border: solid 0px;
 }
+.appS2 {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg);
+    border: solid 0px;
+}
+
 #appLS0 {
     cursor: pointer;
 }
 #appLS1 {
+    cursor: pointer;
+}
+#appLS2 {
     cursor: pointer;
 }
 .appB0 {
@@ -710,3 +720,10 @@ a:active { text-decoration: none; }
 
 #dLeerdoelSelected {left: 0%;}
 #dFeedbackSelected {right: 0%;}
+
+.ioTestApp {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: solid 0px;
+}

@@ -1,5 +1,6 @@
 var appS0 = document.getElementById('appS0');
 var appS1 = document.getElementById('appS1');
+var appS2 = document.getElementById('appS2');
 var appB0 = document.getElementById('appB0');
 var appB1 = document.getElementById('appB1');
 var appB2 = document.getElementById('appB2');
@@ -9,6 +10,7 @@ var appD2 = document.getElementById('appD2');
 
 var ls0 = document.getElementById('appLS0');
 var ls1 = document.getElementById('appLS1');
+var ls2 = document.getElementById('appLS2');
 
 var lb0 = document.getElementById('appLB0');
 var lb1 = document.getElementById('appLB1');
@@ -19,23 +21,35 @@ var ld1 = document.getElementById('appLD1');
 var ld2 = document.getElementById('appLD2');
 
 function toAppS0 () {
-    appS0.classList.add('div_Show');
-    appS0.classList.remove('div_Away');
-    appS1.classList.remove('div_Show');
-    appS1.classList.add('div_Away');
+    appS0.classList.add('div_Show'); appS0.classList.remove('div_Away');
+    appS2.classList.remove('div_Show'); appS2.classList.add('div_Away');
+    appS1.classList.remove('div_Show'); appS1.classList.add('div_Away');
     ls1.classList.remove('active');
+    ls2.classList.remove('active');
     ls0.classList.add('active');
 }
 
 function toAppS1 () {
     appS1.classList.add('div_Show');
     appS1.classList.remove('div_Away');
+    appS2.classList.remove('div_Show'); appS2.classList.add('div_Away');
     appS0.classList.remove('div_Show');
     appS0.classList.add('div_Away');
     ls0.classList.remove('active');
+    ls2.classList.remove('active');
     ls1.classList.add('active');
 }
 
+function toAppS2 () {
+    appS2.classList.add('div_Show');
+    appS2.classList.remove('div_Away');
+    appS1.classList.remove('div_Show'); appS1.classList.add('div_Away');
+    appS0.classList.remove('div_Show');
+    appS0.classList.add('div_Away');
+    ls0.classList.remove('active');
+    ls1.classList.remove('active');
+    ls2.classList.add('active');
+}
 function toAppB0 () {
     appB0.classList.add('div_Show');
     appB0.classList.remove('div_Away');

@@ -53,6 +53,7 @@ global $WerktijdWeek;
             <div id="aUIm1" class="aUIm0 div_Away">
                 <a id="appLS0" onclick="toAppS0();" class="active">In/Uit Klokken</a>
                 <a id="appLS1" onclick="toAppS1();">Leerdoelen</a>
+                <a id="appLS2" onclick="toAppS2();">Uren</a>
             </div>
             <div id="aUIm2" class="aUIm1 div_Away">
                 <a id="appLB0" onclick="toAppB0();" class="active">Werktijden</a>
@@ -81,6 +82,28 @@ global $WerktijdWeek;
                         </textarea>
                         <input type="submit" value="Submit" name="doelsubmit">
                     </form>
+                </div>
+            </div>
+            <div class="appS2 div_Away" id="appS2">
+                <div class="ioTestApp">
+                    <?php
+                       $seltest = mysqli_query($server, "SELECT `date`, `start`, `end` FROM `time` WHERE id = '$id'");
+                       $tid = mysqli_num_rows($seltest);
+                       if($tid>0) {
+                           while($result=mysqli_fetch_assoc($seltest)) {
+                               echo "<p style='color: var(--fg)'>
+                                        ".$result['date']."
+                                        -
+                                        ".$result['start']."
+                                        - 
+                                        ".$result['end']."
+                                        <br>
+                                    </p>
+                                ";
+                           }
+                    }
+
+                    ?>
                 </div>
             </div>
             <div class="appB0 div_Away" id="appB0">
@@ -123,7 +146,7 @@ global $WerktijdWeek;
                             </div>
                             <div class="ioWorkHours-Input">
                                 <?php
-                                $BnulStudent = $_SESSION['bselapp0'];
+                               $BnulStudent = $_SESSION['bselapp0'];
                                 $selyy = mysqli_query($server, " SELECT * FROM `werktijden` WHERE student = '$BnulStudent'");
                                 $tid = mysqli_num_rows($selyy);
                                 if($tid>0) {
@@ -153,8 +176,6 @@ global $WerktijdWeek;
                                 }
                                 }
                                 ?>
-                            </div>
-                            <div class="ioWorkhrsSubmit">
                             </div>
                         </div>
                 </div>
@@ -199,11 +220,12 @@ global $WerktijdWeek;
                          <input type="radio" name="bfriday" value="Afwezig" id="bAA-VR-B" required><br>
                          <?php
                          $eid = mysqli_num_rows($selt);
+                         $counter = 0;
                          if ($eid > 0) {
                              while ($result = mysqli_fetch_assoc($sele)) {
                                  echo "
                                    <label for='bselectedstudent'>".$result['username']."</label>
-                                   <input type='radio' value='".$result['username']."' name='bselectedstudent' id='bselectedstudent' required><br>
+                                   <input type='radio' value='".$result['username']."' name='bselectedstudent' required><br>
                                    ";
                              }
                          }
@@ -401,67 +423,69 @@ global $WerktijdWeek;
                 }
                 ?>
             </div>
-    <div class="appD2 div_Away" id="appD2">
-        <div class="addUserBtn" onclick="toggleUserAdd()">
-            <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png" alt="addUser">
-        </div>
-        <div class="changeUserBtn" onclick="toggleUserEdit()">
-            <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png" alt="editUser">
-        </div>
-        <div class="DeleteUserBtn" onclick="toggleUserDel()">
-            <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png" alt="deleteUser">
-        </div>
-        <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
-            <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png" alt="addComp">
-        </div>
-        <div id="d2AddUser" class="d2AddUser div_Away">
-            <div class="d2AddUserHeader">
-                <div class='centerTag'><h3 style="color: var(--fg)">Nieuw Account</h3></div>
+            <div class="appD2 div_Away" id="appD2">
+                <div class="addUserBtn" onclick="toggleUserAdd()">
+                    <img id="d2UserIMG" class="addUserBtnStyle" src="icons/addUser.png" alt="addUser">
+                </div>
+                <div class="changeUserBtn" onclick="toggleUserEdit()">
+                    <img id="d2EditIMG" class="addUserBtnStyle" src="icons/editUser.png" alt="editUser">
+                </div>
+                <div class="DeleteUserBtn" onclick="toggleUserDel()">
+                    <img id="d2DeleteIMG" class="addUserBtnStyle" src="icons/deleteUser.png" alt="deleteUser">
+                </div>
+                <div class="AddCompanyBtn" onclick="toggleCompanyAdd()">
+                    <img id="d2CompanyIMG" class="addCompanyBtnStyle" src="icons/addCompany.png" alt="addComp">
+                </div>
+                <div id="d2AddUser" class="d2AddUser div_Away">
+                    <div class="d2AddUserHeader">
+                        <div class='centerTag'><h3 style="color: var(--fg)">Nieuw Account</h3></div>
+                    </div>
+                    <div class="d2AddUserForm">
+                        <form method="post" action="../utils/php/d_AddUser.php">
+                            <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
+                            <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
+                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio1">Student</label>
+                                <input id="d2Radio1" value="1" name="role" type="radio" required></div>
+                            <div class='centerTag'><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
+                                <input id="d2Radio2" value="2" name="role" type="radio" required></div>
+                            <div class='centerTag'><label class="d2RadioLabel" for="d2Radio3">Docent</label>
+                                <input id="d2Radio3" value="3" name="role" type="radio" required></div>
+                            <br>
+                            <div class='centerTag'><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="d2AddUserForm">
-                <form method="post" action="../utils/php/d_AddUser.php">
-                    <input class="d2AddUserFormBtnStyle" type="text" name="Username" placeholder="Gebruikersnaam" required>
-                    <input class="d2AddUserFormBtnStyle" type="password" name="Pass" style="margin-top:10px;" placeholder="Wachtwoord" required>
-                    <div class='centerTag'><label class="d2RadioLabel" for="d2Radio1">Student</label>
-                        <input id="d2Radio1" value="1" name="role" type="radio" required></div>
-                    <div class='centerTag'><label  class="d2RadioLabel" for="d2Radio2">Begeleider</label>
-                        <input id="d2Radio2" value="2" name="role" type="radio" required></div>
-                    <div class='centerTag'><label class="d2RadioLabel" for="d2Radio3">Docent</label>
-                        <input id="d2Radio3" value="3" name="role" type="radio" required></div>
-                    <br>
-                    <div class='centerTag'><input class="d2AddUserFormRegBtn" type="submit" value="Registreren" name="login"></div>
-                </form>
+            <div id="d2EditUsers" class="d2EditUsers div_Away">
+                    <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
+                <div id='editUserSel' class="d2EditSelUser div_Show">
+                    <?php
+                    $eid=mysqli_num_rows($selo);
+                    if($eid>0) {
+                       while ($result=mysqli_fetch_assoc($selo)) {
+                          echo "
+                          <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
+                          "; $_SESSION['editSelID'] = $result['id'];
+                       }}
+                    ?>
+                </div>
             </div>
-        </div>
-        <div id="d2EditUsers" class="d2EditUsers div_Away">
-                <div class='centerTag'><p style="color: var(--fg)">Verander een Gebruiker</p></div>
-            <div id='editUserSel' class="d2EditSelUser div_Show">
-                <?php
-                $eid=mysqli_num_rows($selo);
-                if($eid>0) {
-                   while ($result=mysqli_fetch_assoc($selo)) {
-                      echo "
-                      <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>
-                      "; $_SESSION['editSelID'] = $result['id'];
-                   }}
-                ?>
-            </div>
-        </div>
-        <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
-            <div class='centerTag'><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></div>
-            <div class="d2EditSelUser">
-                <form method="post">
-                   <?php
-                   $did=mysqli_num_rows($seld);
-                   if($did>0) {
-                    while ($result=mysqli_fetch_assoc($seld)) {
-                        echo "
-                            <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></div>
-                        ";
-                    }
-                   }
-                   ?>
-                </form>
+            <div id="d2DeleteUsers" class="d2DeleteUsers div_Away">
+                <div class='centerTag'><h1 style="color: var(--fg)">Verwijder een Gebruiker</h1></div>
+                <div class="d2EditSelUser">
+                    <form method="post">
+                       <?php
+                       $did=mysqli_num_rows($seld);
+                       if($did>0) {
+                        while ($result=mysqli_fetch_assoc($seld)) {
+                            echo "
+                                <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']."' class='d2EditSelArray'>".$result["username"]."</a></div>
+                            ";
+                        }
+                       }
+                       ?>
+                    </form>
+               </div>
             </div>
             <div id="companyAdd" class="d2DeleteUsers div_Away">
                 <form method="post" action="../utils/php/d_AddCompany.php">
@@ -469,6 +493,7 @@ global $WerktijdWeek;
                     <input type="submit" value="Submit" name="companysubmit">
                 </form>
             </div>
+        </div>
         </div>
     </div>
     <div id="ioDemoWall" class="ioDemoWallpaper blur_On">
