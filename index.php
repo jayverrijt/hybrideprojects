@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <title>Studentenstage</title>
+  <title>Hybride Projects</title>
   <link rel="shortcut icon" href="utils/favicon.png">
   <link rel="stylesheet" href="jsapp/_jsapp_styles/ioSummonLogin.css">
   <link rel="stylesheet" href="global.css">
@@ -15,7 +15,7 @@
     </div>
     <div id="ioLoginApp" class="ioLoginApp div_Show blur_Off">
       <div class="centerTag"><h1 class="ioLoginHeader">
-        Studenten Stage
+        Hybride Projects
           </h1></div>
       <div class="ioLoginStyleCenter">
         <form class="ioLoginFormStyle" method="post">

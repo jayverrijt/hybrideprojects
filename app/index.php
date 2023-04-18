@@ -47,7 +47,7 @@ global $WerktijdWeek;
             </div>
         </div>
         <div id="appLogoBranding">
-            <div class="centerTag"><h1 class="mainHeader">Studenten Stage</h1></div>
+            <div class="centerTag"><h1 class="mainHeader">Hybride Projects</h1></div>
         </div>
         <div id="appUIMenu">
             <div id="aUIm1" class="aUIm0 div_Away">
