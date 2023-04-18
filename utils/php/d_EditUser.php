@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="../favicon.png">
     <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="../../jsapp/_jsapp_styles/editUser.css">
-    <title>Edit Account <?=$user?> · Studentenstage</title>
+    <title>Edit Account <?=$user?> · Hybride Projects</title>
 </head>
 <body>
     <div class="container">

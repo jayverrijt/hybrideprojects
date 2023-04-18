@@ -45,6 +45,11 @@ section::-webkit-scrollbar {
     align-content: center;
 }
 
+.container-build {
+    border: solid 0px;
+    position: absolute;
+}
+
 :root {
     --bg: var(--nord0);
     --fg: var(--nord4);

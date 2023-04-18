@@ -239,6 +239,12 @@ body {
     background-color: var(--bg);
     border: solid 0px;
 }
+.appB3 {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg);
+    border: solid 0px;
+}
 .appD0 {
     height: 100%;
     width: 100%;

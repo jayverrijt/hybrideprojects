@@ -4,6 +4,7 @@ var appS2 = document.getElementById('appS2');
 var appB0 = document.getElementById('appB0');
 var appB1 = document.getElementById('appB1');
 var appB2 = document.getElementById('appB2');
+var appB3 = document.getElementById('appB3');
 var appD0 = document.getElementById('appD0');
 var appD1 = document.getElementById('appD1');
 var appD2 = document.getElementById('appD2');
@@ -15,6 +16,7 @@ var ls2 = document.getElementById('appLS2');
 var lb0 = document.getElementById('appLB0');
 var lb1 = document.getElementById('appLB1');
 var lb2 = document.getElementById('appLB2');
+var lb3 = document.getElementById('appLB3');
 
 var ld0 = document.getElementById('appLD0');
 var ld1 = document.getElementById('appLD1');
@@ -56,9 +58,12 @@ function toAppB0 () {
     appB1.classList.remove('div_Show');
     appB2.classList.remove('div_Show');
     appB1.classList.add('div_Away');
+    appB3.classList.remove('div_Show');
+    appB3.classList.add('div_Away');
     appB2.classList.add('div_Away');
     lb1.classList.remove('active');
     lb2.classList.remove('active');
+    lb3.classList.remove('active');
     lb0.classList.add('active');
 }
 
@@ -69,8 +74,11 @@ function toAppB1 () {
     appB2.classList.remove('div_Show');
     appB0.classList.add('div_Away');
     appB2.classList.add('div_Away');
+    appB3.classList.remove('div_Show');
+    appB3.classList.add('div_Away');
     lb0.classList.remove('active');
     lb2.classList.remove('active');
+    lb3.classList.remove('active');
     lb1.classList.add('active');
 }
 
@@ -80,10 +88,28 @@ function toAppB2 () {
     appB0.classList.remove('div_Show');
     appB1.classList.remove('div_Show');
     appB0.classList.add('div_Away');
+    appB3.classList.remove('div_Show');
+    appB3.classList.add('div_Away');
     appB1.classList.add('div_Away');
     lb0.classList.remove('active');
     lb1.classList.remove('active');
+    lb3.classList.remove('active');
     lb2.classList.add('active');
+}
+
+function toAppB3() {
+    appB3.classList.add('div_Show');
+    appB3.classList.remove('div_Away');
+    appB0.classList.remove('div_Show');
+    appB1.classList.remove('div_Show');
+    appB0.classList.add('div_Away');
+    appB2.classList.remove('div_Show');
+    appB2.classList.add('div_Away');
+    appB1.classList.add('div_Away');
+    lb0.classList.remove('active');
+    lb1.classList.remove('active');
+    lb2.classList.remove('active');
+    lb3.classList.add('active');
 }
 
 function toAppD0 () {

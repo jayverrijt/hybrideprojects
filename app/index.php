@@ -30,7 +30,7 @@ global $WerktijdWeek;
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title><?= $_SESSION['username'] ?> · Studentenstage</title>
+    <title><?= $_SESSION['username'] ?> · Hybride Projects</title>
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
@@ -59,6 +59,7 @@ global $WerktijdWeek;
                 <a id="appLB0" onclick="toAppB0();" class="active">Werktijden</a>
                 <a id="appLB1" onclick="toAppB1();">Aanwezigheid</a>
                 <a id="appLB2" onclick="toAppB2();">Feedback op Student</a>
+                <a id="appLB3" onclick="toAppB3();">Eind Beoordelingen</a>
             </div>
             <div id="aUIm3" class="aUIm2 div_Away">
                 <a id="appLD0" onclick="toAppD0();" class="active">Werktijden</a>
@@ -277,6 +278,7 @@ global $WerktijdWeek;
                     }
                 ?>
             </div>
+            <div class="appB3 div_Away" id="appB3"></div>
             <div class="appD0 div_Away" id="appD0">
                 <div class="div_Show" id="dwerktijdsel">
                     <form method="post" action="./index.php">
