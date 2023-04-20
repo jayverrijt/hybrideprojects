@@ -34,8 +34,8 @@ global $WerktijdWeek;
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
 </head>
-<body>
-    <div id="appUIbody" class="appUIBody div_Show blur_Off">
+<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit()">
+    <div id="appUIbody" class="appUIBody div_Away blur_Off">
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
                 <button class="appUIBtnStyle"
@@ -54,27 +54,27 @@ global $WerktijdWeek;
                     echo "
                     <div id='appUIMenu'>
                         <div id='aUIm1' class='aUIm'>
-                            <a id='appLS0' class='active'>In/Uit Klokken</a>
-                            <a id='appLS1'>Leerdoel</a>
-                            <a id='appLS2'>Uren</a>
+                            <a onclick='toAppS0()' id='appLS0' class='active'>In/Uit Klokken</a>
+                            <a onclick='toAppS1()' id='appLS1'>Leerdoel</a>
+                            <a onclick='toAppS2()' id='appLS2'>Uren</a>
                         </div>
                     </div>
                     <div id='appUIContent'>
-                        <div class='appS0 div_Show'>
+                        <div id='appS0' class='appS0 div_Show'>
                             <div class='ioClockFrame'>
                                 <form method='post' action='post/'>
                                     <input type='submit' value='Inklokken'> 
                                 </form>
                             </div> 
                         </div>
-                        <div class='appS1 div_Away'>
+                        <div id='appS1' class='appS1 div_Away'>
                             <form>
                                 <label for='leerdoel'>Leerdoel</label>
                                 <textarea id='leerdoel' name='leerdoel'></textarea>
                                 <input type='submit' value='Submit' name='doelsubmit'>
                             </form> 
                         </div>
-                        <div class='appS2 div_Away'>";
+                        <div id='appS2' class='appS2 div_Away'>";
                             $seltest = mysqli_query($server, "SELECT `date`, `start`, `end` FROM `time` WHERE id = '$id'");
                             $tid = mysqli_num_rows($seltest);
                             if($tid>0) {
@@ -99,14 +99,14 @@ global $WerktijdWeek;
                     echo "
                     <div id='appUIMenu'>
                         <div id='aUIm2' class='aUIm'>
-                            <a id='appLB0' class='active'>Werktijden</a>
-                            <a id='appLB1'>Aanwezigheid</a>
-                            <a id='appLB2'>Feedback op Student</a>
-                            <a id='appLB3'>Eind Beoordelingen</a>
+                            <a onclick='toAppB0()' id='appLB0' class='active'>Werktijden</a>
+                            <a onclick='toAppB1()' id='appLB1'>Aanwezigheid</a>
+                            <a onclick='toAppB2()' id='appLB2'>Feedback op Student</a>
+                            <a onclick='toAppB3()' id='appLB3'>Eind Beoordelingen</a>
                         </div>
                     </div>
                     <div id='appUIContent'>
-                        <div class='appB0 div_Show'>
+                        <div id='appB0' class='appB0 div_Show'>
                             <div class='div_Show' id='appD0studentsel'>
                                 <form method='post' action='./'>
                                 ";
@@ -199,7 +199,7 @@ global $WerktijdWeek;
                                 
                             </div>
                         </div>
-                        <div class='appB1 div_Away'>
+                        <div id='appB1' class='appB1 div_Away'>
                             <form action='../utils/php/b_SubmitAanwezigheid.php' method='post'>
                                 <label for='bAA-MA-A'>Maandag</label>
                                 <input type='radio' name='bmonday' value='Aanwezig' id='bAA-MA-A' required>
@@ -231,7 +231,7 @@ global $WerktijdWeek;
                                 <input type='submit' value='Submit' name='baanwezigheidsubmit'>
                             </form>
                         </div>
-                        <div class='appB2 div_Away'>
+                        <div id='appB2' class='appB2 div_Away'>
                           <div class='div_Show' id='appB2UserSel'>
                             <form method='post'>
                             ";
@@ -272,7 +272,7 @@ global $WerktijdWeek;
                             }
                                 echo "
                         </div>
-                        <div class='appB3 div_Away'>
+                        <div id='appB3' class='appB3 div_Away'>
                         </div>
                     </div>
                     ";
@@ -281,13 +281,13 @@ global $WerktijdWeek;
                     echo "
                     <div id='appUIMenu'>
                         <div id='aUIm3' class='aUIm'>
-                            <a id='appLD0' class='active'>Werktijden</a>
-                            <a id='appLD1'>Ontvangen Feedbacks</a>
-                            <a id='appLD2'>Gebruikers</a>
+                            <a onclick='toAppD0()' id='appLD0' class='active'>Werktijden</a>
+                            <a onclick='toAppD1()' id='appLD1'>Ontvangen Feedbacks</a>
+                            <a onclick='toAppD2()' id='appLD2'>Gebruikers</a>
                         </div>
                     </div>
                     <div id='appUIContent'>
-                        <div class='appD0 div_Away'>
+                        <div id='appD0' class='appD0 div_Show'>
                             <div class='div_Show' id='dwerktijdsel'>
                                 <form method='post' action='./index.php'>
                                 ";
@@ -371,7 +371,7 @@ global $WerktijdWeek;
                                 }
                                         echo "
                     </div>
-                    <div class='appD1 div_Show'>
+                    <div id='appD1' class='appD1 div_Away'>
                         <div id='dFeedbackuser' class='div_Show'>
                             <form method='post' action='./index.php'>
                             ";
@@ -431,7 +431,7 @@ global $WerktijdWeek;
                     }
                     echo "
                     </div>
-                       <div class='appD2 div_Away' id='appD2'>
+                       <div id='appD2' class='appD2 div_Away'>
                             <div class='addUserBtn' onclick='toggleUserAdd()'>
                                 <img id='d2UserIMG' class='addUserBtnStyle' src='icons/addUser.png' alt='addUser'>
                             </div>
@@ -472,8 +472,8 @@ global $WerktijdWeek;
                                 if($eid>0) {
                                     while ($result=mysqli_fetch_assoc($selo)) {
                                         echo "
-                                      <a href='../utils/php/d_EditUser.php?id=".$result['id'].">".$result['username']."</a>
-                                      "; $_SESSION['editSelID'] = $result['id'];
+                                        <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>";
+                                        $_SESSION['editSelID'] = $result['id'];
                                    }}
                                 echo "
                             </div>
@@ -507,9 +507,75 @@ global $WerktijdWeek;
                     ";
                     break;
                 default:
-                    echo "Login Failed geen rol type bij dit account";
+                    echo "Illigal pattern";
+                    header('Location: ../');
             }
         ?>
-   </div>
+    </div>
+        <div id='ioDemoWall' class='ioDemoWallpaper blur_On'>
+            <img id='ioDemoWallpaper' src='../utils/wallpapers/1.jpg' alt='Wallpaper'>
+        </div>
+        <div id='ioDemoApp' class='ioDemoForm div_Show blur_Off'>
+            <div class='ioDemoFormLeft'>
+                <div id='ioDemoFormLeftBtn' class='ioDemoFormLeftBtnHolder div_Away'>
+                    <button class='ioDemoButtonStyle' onclick='ioDemoFormBack()'>
+                        <img class='ioDemoArrowFix' src='icons/left-arrow.png' alt='arrow-left'>
+                    </button>
+                </div>
+            </div>
+            <div class='ioDemoFormCenter'>
+                <div class='ioDemoFormContent'>
+                    <div id='ioDemoForm0' class='ioDemoForm0 div_Show'>
+                        <img alt='demoPicture' class='ioDemoIMG' src='../utils/wallpapers/demo1.jpg'>
+                    </div>
+                    <div id='ioDemoForm1' class='ioDemoForm1 div_Away'>
+                        <img alt='demoWallpaper' class='ioDemoIMG' src='../utils/wallpapers/demo2.jpg'>
+                    </div>
+                </div>
+            </div>
+            <div class='ioDemoFormRight'>
+                <div class='ioDemoFormRightBtnHolder'>
+                    <div id='ioDemoFormBtnRight0' class='ioDemoFormRightBtnHolderChild0 div_Show'>
+                        <button class='ioDemoButtonStyle' onclick='ioDemoFormNextChild0()'>
+                            <img class='ioDemoArrowFix' src='icons/right-arrow.png' alt='arrow-right'>
+                        </button>
+                    </div>
+                    <div id='ioDemoFormBtnRight1' class='ioDemoFormRightBtnHolderChild1 div_Away'>
+                        <form method='post' action='../utils/php/demo.php'>
+                            <button class='ioDemoButtonStyle' name='ioDemoFormNextChild1'>
+                                <img class='ioDemoArrowFix' src='icons/right-arrow.png' alt='arrow-right'>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        function ioDemoInit() {
+            let app = document.getElementById('appUIbody');
+            let demo = document.getElementById('ioDemoApp');
+            let wall = document.getElementById('ioDemoWall');
+            switch (<?= $demo ?>) {
+                case 1:
+                    if(demo.classList.contains('div_Show')) {
+                    } else {
+                        demo.classList.remove('div_Away');
+                        demo.classList.add('div_Show');
+                    }
+                    break;
+                case 2:
+                    demo.classList.remove('div_Show'); demo.classList.add('div_Away'); wall.classList.add('div_Away');
+                    app.classList.remove('div_Away');app.classList.add('div_Show')
+                    break;
+                default:
+                    alert("Err");
+                    break;
+            }
+        }
+    </script>
+    <script src="../jsapp/appTaskSwitch.js"></script>
+    <script src="../jsapp/d2.js"></script>
+    <script src="../jsapp/ioDemoForm.js"></script>
+
 </body>
 </html>
