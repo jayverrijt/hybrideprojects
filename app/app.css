@@ -34,28 +34,14 @@ body {
     left: 5%;
     border: solid 0px;
 }
-.aUIm0 {
+.aUIm {
     height: 100%;
     width: 100%;
     position: absolute;
     background-color: var(--bg);
     border: solid 0px;
 }
-.aUIm1 {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color:  var(--bg);
-    border: solid 0px;
-}
-.aUIm2 {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: var(--bg);
-    border: solid 0px;
-}
-.aUIm2 a {
+.aUIm a {
     background-color: var(--bg);
     color: var(--fg);
     display: block;
@@ -63,43 +49,10 @@ body {
     border-radius: 18px;
     text-decoration: none;
 }
-.aUIm2 a:hover {
+.aUIm a:hover {
     background-color: var(--nord1);
 }
-.aUIm2 a.active {
-    background-color: var(--nord1);
-    color: var(--fg);
-    border-radius: 18px;
-}
-.aUIm1 a {
-    background-color: var(--bg);
-    color: var(--fg);
-    display: block;
-    padding: 12px;
-    border-radius: 18px;
-    text-decoration: none;
-}
-.aUIm1 a:hover {
-    background-color: var(--nord1);
-}
-.aUIm1 a.active {
-    background-color: var(--nord1);
-    color: var(--fg);
-    border-radius: 18px;
-}
-.aUIm0 a {
-    background-color: var(--bg);
-    cursor: pointer;
-    color: var(--fg);
-    display: block;
-    padding: 12px;
-    border-radius: 18px;
-    text-decoration: none;
-}
-.aUIm0 a:hover {
-    background-color: var(--nord1);
-}
-.aUIm0 a.active {
+.aUIm a.active {
     background-color: var(--nord1);
     color: var(--fg);
     border-radius: 18px;
