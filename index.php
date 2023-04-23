@@ -62,20 +62,6 @@ if (isset($_POST['login'])) {
 
 // RW
 if (isset($_SESSION["username"])) {
-  if (isset($_SESSION["username"])) {
-    switch ($row['perm']) {
-      case '1':
-        header('Location:app/');
-        break;
-      case '2':
-        header('Location:app/');
-        break;
-      case '3':
-        header('Location:app/');
-        break;
-      default:
-        echo "Unknown Error";
-    }
-  }
+    header('Location:app/');
 }
 ?>
