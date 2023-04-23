@@ -7,10 +7,12 @@ var screenD2e = document.getElementById('d2EditUsers');
 var selScreen = document.getElementById('editUserSel');
 var screenD2d = document.getElementById('d2DeleteUsers');
 var companyScreen = document.getElementById('companyAdd');
+var finalScreen = document.getElementById('B3StudSel');
 var d2Counter0 = 0;
 var d2Counter1 = 0;
 var d2Counter2 = 0;
 var d2Counter3 = 0;
+var d2Counter4 = 0;
 
 function toggleUserAdd () {
     if(d2Counter0 == 1) {
@@ -59,5 +61,15 @@ function toggleCompanyAdd () {
         companyScreen.classList.remove('div_Show'); companyScreen.classList.add('div_Away')
         imgD2b.src = "icons/addCompany.png";
         d2Counter3++;
+    }
+}
+
+function B3StudSel() {
+    if(d2Counter4 == 1) {
+        finalScreen.classList.remove('div_Away'); finalScreen.classList.add('div_Show')
+        d2Counter4--;
+    } else if (d2Counter4== 0)  {
+        finalScreen.classList.remove('div_Show'); finalScreen.classList.add('div_Away')
+        d2Counter4++;
     }
 }

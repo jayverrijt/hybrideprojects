@@ -19,6 +19,7 @@ $selo = mysqli_query($server, " SELECT * FROM `users`");
 $selp = mysqli_query($server, " SELECT * FROM `leerdoel`");
 $selx = mysqli_query($server, " SELECT * FROM `users`");
 $selx = mysqli_query($server, " SELECT * FROM `users`");
+$selxx = mysqli_query($server, "SELECT * FROM users WHERE done = '2'");
 $selz = mysqli_query($server, " SELECT * FROM `users`");
 $selcompany = mysqli_query($server, " SELECT * FROM `company`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
@@ -34,7 +35,7 @@ global $WerktijdWeek;
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
 </head>
-<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit()">
+<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit(); B3StudSel()">
     <div id="appUIbody" class="appUIBody div_Away blur_Off">
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
@@ -273,6 +274,55 @@ global $WerktijdWeek;
                                 echo "
                         </div>
                         <div id='appB3' class='appB3 div_Away'>
+                            <div id='B3SelScreen' class='div_Show'>
+                                <div class='B3ReviewStudentBtn' onclick='B3StudSel()'>
+                                    <p>Test</p>
+                                </div>
+                                <div id='B3StudSel' class='B3ReviewStudSel div_Away'>
+                                    <form method='post'>
+                                         ";
+                                         $result = mysqli_num_rows($selxx);
+                                         if($result>0) {
+                                             while($result=mysqli_fetch_assoc($selxx)) {
+                                                 echo "
+                                                     <button name='B3SelUser'>".$result['username']."</button>
+                                                 ";
+                                             }
+                                         }
+                                echo "
+                                    </form>
+                                </div>
+                            </div>
+                            <div id='B3ReviewField' class='B3ReviewField div_Away'>
+                            ";
+                                         echo "<form method='post'>
+                                                  <input type='submit' name='test' value='Terug'>
+                                                  </form>";
+
+                                         if(isset($_POST['test'])) {
+                                             unset($_SESSION['B3SelUser']);
+                                         }
+                            echo "
+                            </div>
+                            ";
+                                if(isset($_POST['B3SelUser'])) {
+                                    $_SESSION['B3SelUser'] = $_POST['B3SelUser'];
+                                }
+
+                                if(isset($_SESSION['B3SelUser'])) {
+                                    echo "
+                                    <script>
+                                        var one = document.getElementById('B3SelScreen');
+                                        var two = document.getElementById('B3ReviewField');
+                                        
+                                        one.classList.remove('div_Show');
+                                        one.classList.add('div_Away');
+                                        two.classList.remove('div_Away');
+                                        two.classList.add('div_Show');
+                                    </script>
+                                    ";
+                                }
+                            echo "
                         </div>
                     </div>
                     ";
@@ -507,7 +557,7 @@ global $WerktijdWeek;
                     ";
                     break;
                 default:
-                    echo "Illigal pattern";
+                    echo "Illigaal Patroon";
                     header('Location: ../');
             }
         ?>
@@ -576,6 +626,5 @@ global $WerktijdWeek;
     <script src="../jsapp/appTaskSwitch.js"></script>
     <script src="../jsapp/d2.js"></script>
     <script src="../jsapp/ioDemoForm.js"></script>
-
 </body>
 </html>

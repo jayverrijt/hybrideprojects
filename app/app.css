@@ -686,3 +686,29 @@ a:active { text-decoration: none; }
     position: relative;
     border: solid 0px;
 }
+
+.B3ReviewStudentBtn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    cursor: pointer;
+}
+
+.B3ReviewStudSel {
+    height: 20%;
+    width: 30%;
+    background-color: var(--nord10);
+    border-radius: 18px;
+    overflow: hidden;
+    float: right;
+    border: solid 0px;
+    position: absolute;
+    bottom: 8%;
+    right: 1%;
+    display: flex;
+}
