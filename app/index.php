@@ -285,7 +285,7 @@ global $WerktijdWeek;
                                          if($result>0) {
                                              while($result=mysqli_fetch_assoc($selxx)) {
                                                  echo "
-                                                     <button name='B3SelUser'>".$result['username']."</button>
+                                                     <input type='submit' name='B3SelectedUser' value=".$result['username']."></input>
                                                  ";
                                              }
                                          }
@@ -293,22 +293,72 @@ global $WerktijdWeek;
                                     </form>
                                 </div>
                             </div>
-                            <div id='B3ReviewField' class='B3ReviewField div_Away'>
                             ";
-                                         echo "<form method='post'>
-                                                  <input type='submit' name='test' value='Terug'>
-                                                  </form>";
-
-                                         if(isset($_POST['test'])) {
-                                             unset($_SESSION['B3SelUser']);
-                                         }
+                                 if(isset($_POST['B3SelectedUser'])) {
+                                     $_SESSION['B3SelUser'] = $_POST['B3SelectedUser'];
+                                 }
+                    echo "
+                            <div id='B3ReviewField' class='B3ReviewField div_Away'>
+                            "; echo "
+                                            <div class='B3ReviewForm'>
+                                                <form method='post' action='../utils/php/b_SubmitBeoordeling.php'>
+                                                    <label style='color: var(--fg)' for='aanwezigheid'>Aanwezigheid</label>
+                                                    <input type='radio' name='aanwezigheid' value='O'>
+                                                    <input type='radio' name='aanwezigheid' value='V'>
+                                                    <input type='radio' name='aanwezigheid' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='luister'>Luisterd goed / Volgt aanwijzigen</label>
+                                                    <input type='radio' name='luister' value='O'>
+                                                    <input type='radio' name='luister' value='V'>
+                                                    <input type='radio' name='luister' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='hulpraad'>Vraagt tijdig om hulp/raad</label>
+                                                    <input type='radio' name='hulpraad' value='O'>
+                                                    <input type='radio' name='hulpraad' value='V'>
+                                                    <input type='radio' name='hulpraad' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='verantwoordelijk'>Verantwoordelijkheidsgevoel</label>
+                                                    <input type='radio' name='verantwoordelijk' value='O'>
+                                                    <input type='radio' name='verantwoordelijk' value='V'>
+                                                    <input type='radio' name='verantwoordelijk' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='plezier'>Werkt met plezier</label>
+                                                    <input type='radio' name='plezier' value='O'>
+                                                    <input type='radio' name='plezier' value='V'>
+                                                    <input type='radio' name='plezier' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='klantgericht'>Klantgericht en vriendelijk</label>
+                                                    <input type='radio' name='klantgericht' value='O'>
+                                                    <input type='radio' name='klantgericht' value='V'>
+                                                    <input type='radio' name='klantgericht' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='werktempo'>Werktempo</label>
+                                                    <input type='radio' name='werktempo' value='O'>
+                                                    <input type='radio' name='werktempo' value='V'>
+                                                    <input type='radio' name='werktempo' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='uitvoer'>Voert opgedragen werk uit</label>
+                                                    <input type='radio' name='uitvoer' value='O'>
+                                                    <input type='radio' name='uitvoer' value='V'>
+                                                    <input type='radio' name='uitvoer' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='vaardigheid'>Vaardigheid met IT Software / tools</label>
+                                                    <input type='radio' name='vaardigheid' value='O'>
+                                                    <input type='radio' name='vaardigheid' value='V'>
+                                                    <input type='radio' name='vaardigheid' value='G'>
+                                                    <br>
+                                                    <label style='color: var(--fg)' for='initatief'>Toont initatief</label>
+                                                    <input type='radio' name='initatief' value='O'>
+                                                    <input type='radio' name='initatief' value='V'>
+                                                    <input type='radio' name='initatief' value='G'>
+                                                    <br>
+                                                    <input type='submit' value='Submit'>
+                                                </form>
+                                            </div>
+                                         ";
                             echo "
                             </div>
                             ";
-                                if(isset($_POST['B3SelUser'])) {
-                                    $_SESSION['B3SelUser'] = $_POST['B3SelUser'];
-                                }
-
                                 if(isset($_SESSION['B3SelUser'])) {
                                     echo "
                                     <script>
