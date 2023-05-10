@@ -41,6 +41,7 @@ section::-webkit-scrollbar {
     display: block;
     margin: 0 auto;
     text-align: center;
+    object-position: center;
     align-content: center;
 }
 
@@ -69,4 +70,8 @@ section::-webkit-scrollbar {
     --nord13: #EBCB8B ;
     --nord14: #A3BE8C ;
     --nord15: #B48EAD ;
+}
+
+textarea {
+    resize: none;
 }

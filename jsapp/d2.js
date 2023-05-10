@@ -65,11 +65,11 @@ function toggleCompanyAdd () {
 }
 
 function B3StudSel() {
-    if(d2Counter4 == 1) {
-        finalScreen.classList.remove('div_Away'); finalScreen.classList.add('div_Show')
-        d2Counter4--;
-    } else if (d2Counter4== 0)  {
-        finalScreen.classList.remove('div_Show'); finalScreen.classList.add('div_Away')
-        d2Counter4++;
-    }
+//    if(d2Counter4 == 1) {
+//        finalScreen.classList.remove('div_Away'); finalScreen.classList.add('div_Show')
+//        d2Counter4--;
+//    } else if (d2Counter4 == 0)  {
+//        finalScreen.classList.remove('div_Show'); finalScreen.classList.add('div_Away')
+//        d2Counter4++;
+//    }
 }

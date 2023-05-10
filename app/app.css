@@ -274,8 +274,8 @@ body {
     font-style: italic;
 }
 .d2EditUsers {
-    height: 20%;
-    width: 30%;
+    height: 30%;
+    width: 20%;
     background-color: var(--nord10);
     border-radius: 18px;
     overflow: hidden;
@@ -287,8 +287,8 @@ body {
     display: flex;
 }
 .d2DeleteUsers {
-    height: 20%;
-    width: 30%;
+    height: 30%;
+    width: 20%;
     background-color: var(--nord10);
     border-radius: 18px;
     float: right;
@@ -299,9 +299,9 @@ body {
     display: flex;
 }
 .d2EditSelUser {
-    height: 90%;
+    height: 80%;
     width: 100%;
-    bottom: 2%;
+    top: 5%;
     position: relative;
     overflow-y: scroll;
     border: solid 0px;
@@ -462,9 +462,10 @@ a:active { text-decoration: none; }
     height: 25%;
     width: 25%;
     border-radius: 18px;
+    top: 25%;
     border: solid 0px;
     background-color: var(--nord10);
-    position: absolute;
+    position: relative;
 }
 .AddCompanyBtn {
     height: 50px;
@@ -711,4 +712,160 @@ a:active { text-decoration: none; }
     bottom: 8%;
     right: 1%;
     display: flex;
+}
+
+.ioClockBtn {
+    height: 100%;
+    width: 100%;
+    border: solid 0px;
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--nord10);
+    color: var(--fg);
+}
+
+.leerdoel {
+    position: absolute;
+    top: 5%;
+    left: 1%;
+    height: 15%;
+    width: 25%;
+    border-radius: 22px;
+}
+
+.s1Submit {
+    position: absolute;
+    top: 22%;
+    border: solid 0px;
+    background-color: var(--nord10);
+    color: var(--fg);
+    cursor: pointer;
+    left: 2%;
+    height: 4%;
+    width: 8%;
+    border-radius: 22px;
+}
+
+.s1Label {
+    color: var(--fg);
+    font-size: 24px;
+    left: 1%;
+    position: relative;
+}
+
+.S2Header {
+    color: var(--fg);
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.s2head {
+    border: solid 0px;
+    background-color: var(--bg);
+    width: 15%;
+    height: 2%;
+    position: absolute;
+    display: inline-block;
+}
+
+.s2Datum {
+    position: relative;
+    display: inline-block;
+    color: var(--fg);
+    left: 8%;
+}
+
+.s2Start {
+    position: relative;
+    display: inline-block;
+    color: var(--fg);
+    left: 20%;
+}
+
+.s2Eind {
+    position: relative;
+    display: inline-block;
+    color: var(--fg);
+    left: 30%;
+}
+
+.b0btnStyle {
+    background-color: var(--nord10);
+    border: solid 0px;
+    height: 8%;
+    position: relative;
+    width: 12%;
+    color: var(--fg);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.appB0sizefix {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.B1Color {
+    color: var(--fg);
+}
+
+input[type=radio].b1Green {
+    accent-color: green;
+}
+input[type=radio].b1Red {
+    accent-color: red;
+}
+
+.b1Submit {
+    border: solid 0px;
+    background-color: var(--nord10);
+    height: 5%;
+    width: 10%;
+    color: var(--fg);
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.appB2user {
+    border: solid 0px;
+    height: 5%;
+    width: 10%;
+    background-color: var(--nord10);
+    color: var(--fg);
+    border-radius: 18px;
+}
+
+.b4Submit {
+    border: solid 0px;
+    background-color: var(--bg);
+    height: 5%;
+    width: 25%;
+    color: var(--fg);
+    border-radius: 22px;
+}
+
+input[type=radio].b3O {
+    accent-color: red;
+}
+
+input[type=radio].b3V {
+    accent-color: yellow;
+}
+
+input[type=radio].b3G {
+    accent-color: green;
+}
+
+.d2Submit {
+    border: solid 0px;
+    background-color: var(--bg);
+    height: 10%;
+    width: 25%;
+    color: var(--fg);
+    display: inline-block;
+    border-radius: 22px;
+    text-decoration: none;
 }

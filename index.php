@@ -57,6 +57,7 @@ if (isset($_POST['login'])) {
     $_SESSION["perm"] = $row['perm'];
     $_SESSION["demo"] = $row['demo'];
     $_SESSION["id"] = $row['id'];
+    $_SESSION["company"] = $row['company'];
   }
 }
 

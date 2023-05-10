@@ -3,6 +3,7 @@ session_start();
 $perm = $_SESSION["perm"];
 $demo = $_SESSION["demo"];
 $user = $_SESSION["username"];
+$company = $_SESSION["company"];
 $id = $_SESSION["id"];
 if (empty($_SESSION['username'])) {
     header('Location:../');
@@ -13,16 +14,12 @@ $sel = mysqli_query($server, " SELECT * FROM `users`");
 $sela = mysqli_query($server, " SELECT * FROM `users`");
 $selb = mysqli_query($server, " SELECT * FROM `users`");
 $seld = mysqli_query($server, " SELECT * FROM `users`");
-$sele = mysqli_query($server, " SELECT * FROM `users`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
 $selo = mysqli_query($server, " SELECT * FROM `users`");
 $selp = mysqli_query($server, " SELECT * FROM `leerdoel`");
-$selx = mysqli_query($server, " SELECT * FROM `users`");
-$selx = mysqli_query($server, " SELECT * FROM `users`");
-$selxx = mysqli_query($server, "SELECT * FROM users WHERE done = '2'");
 $selz = mysqli_query($server, " SELECT * FROM `users`");
 $selcompany = mysqli_query($server, " SELECT * FROM `company`");
-$selt = mysqli_query($server, " SELECT * FROM `users`");
+
 $row = mysqli_fetch_array($sel);
 $WerktijdWeek = date('W');
 global $WerktijdWeek;
@@ -35,7 +32,7 @@ global $WerktijdWeek;
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
 </head>
-<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit(); B3StudSel()">
+<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); B3StudSel(); toggleUserDel(); toggleUserEdit();">
     <div id="appUIbody" class="appUIBody div_Away blur_Off">
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
@@ -62,20 +59,27 @@ global $WerktijdWeek;
                     </div>
                     <div id='appUIContent'>
                         <div id='appS0' class='appS0 div_Show'>
-                            <div class='ioClockFrame'>
+                            <div class='ioClockFrame centerTag'>
                                 <form method='post' action='post/'>
-                                    <input type='submit' value='Inklokken'> 
+                                    <input type='submit' class='ioClockBtn centerTag' value='Inklokken'> 
                                 </form>
                             </div> 
                         </div>
                         <div id='appS1' class='appS1 div_Away'>
                             <form>
-                                <label for='leerdoel'>Leerdoel</label>
-                                <textarea id='leerdoel' name='leerdoel'></textarea>
-                                <input type='submit' value='Submit' name='doelsubmit'>
+                                <label for='leerdoel' class='s1Label'>Leerdoel</label>
+                                <textarea class='leerdoel' name='leerdoel'></textarea>
+                                <input type='submit' value='Submit' class='s1Submit' name='doelsubmit'>
                             </form> 
                         </div>
-                        <div id='appS2' class='appS2 div_Away'>";
+                        <div id='appS2' class='appS2 div_Away'>
+                            <h1 class='S2Header'>Gewerkte Uren</h1>
+                            <div class='s2head'>
+                                <p class='s2Datum'>Datum</p> 
+                                <p class='s2Start'>Start</p> 
+                                <p class='s2Eind'>Eind</p> 
+                            </div>
+                        ";
                             $seltest = mysqli_query($server, "SELECT `date`, `start`, `end` FROM `time` WHERE id = '$id'");
                             $tid = mysqli_num_rows($seltest);
                             if($tid>0) {
@@ -108,14 +112,14 @@ global $WerktijdWeek;
                     </div>
                     <div id='appUIContent'>
                         <div id='appB0' class='appB0 div_Show'>
-                            <div class='div_Show' id='appD0studentsel'>
+                            <div class='div_Show appB0sizefix' id='appD0studentsel'>
                                 <form method='post' action='./'>
                                 ";
-                                    $sely = mysqli_query($server, " SELECT * FROM `werktijden`");
+                                    $sely = mysqli_query($server, " SELECT * FROM `werktijden` WHERE company = $company");
                                     $tid = mysqli_num_rows($sely);
                                     if($tid>0) {
                                         while($result=mysqli_fetch_assoc($sely)) {
-                                            echo "<input name='bselapp0' type='submit' value='".$result['student']."'>";
+                                            echo "<input name='bselapp0' class='b0btnStyle' type='submit' value='".$result['student']." Week ".$result['week']."'><br>";
                                         }
                                     }
                         echo "
@@ -202,45 +206,50 @@ global $WerktijdWeek;
                         </div>
                         <div id='appB1' class='appB1 div_Away'>
                             <form action='../utils/php/b_SubmitAanwezigheid.php' method='post'>
-                                <label for='bAA-MA-A'>Maandag</label>
-                                <input type='radio' name='bmonday' value='Aanwezig' id='bAA-MA-A' required>
-                                <input type='radio' name='bmonday' value='Afwezig' id='bAA-MA-B' required><br>
-                                <label for='bAA-DI-A'>Dinsdag</label>
-                                <input type='radio' name='bthuesday' value='Aanwezig' id='bAA-DI-A' required>
-                                <input type='radio' name='bthuesday' value='Afwezig' id='bAA-DI-B' required><br>
-                                <label for='bAA-WO-A'>Woensdag</label>
-                                <input type='radio' name='bwednesday' value='Aanwezig' id='bAA-WO-A' required>
-                                <input type='radio' name='bwednesday' value='Afwezig' id='bAA-WO-B' required><br>
-                                <label for='bAA-DO-A'>Donderdag</label>
-                                <input type='radio' name='bdonday' value='Aanwezig' id='bAA-DO-A' required>
-                                <input type='radio' name='bdonday' value='Afwezig' id='bAA-DO-B' required><br>
-                                <label for='bAA-VR-A'>Vrijdag</label>
-                                <input type='radio' name='bfriday' value='Aanwezig' id='bAA-VR-A' required>
-                                <input type='radio' name='bfriday' value='Afwezig' id='bAA-VR-B' required><br>
+                                <p style='color: var(--fg)'>Aanwezigheid</p>
+                                <label class='B1Color' for='bAA-MA-A'>Maandag</label>
+                                <input class='b1Green' type='radio' name='bmonday' value='Aanwezig' id='bAA-MA-A' required>
+                                <input class='b1Red' type='radio' name='bmonday' value='Afwezig' id='bAA-MA-B' required><br>
+                                <label class='B1Color' for='bAA-DI-A'>Dinsdag</label>
+                                <input class='b1Green' type='radio' name='bthuesday' value='Aanwezig' id='bAA-DI-A' required>
+                                <input class='b1Red' type='radio' name='bthuesday' value='Afwezig' id='bAA-DI-B' required><br>
+                                <label class='B1Color' for='bAA-WO-A'>Woensdag</label>
+                                <input class='b1Green' type='radio' name='bwednesday' value='Aanwezig' id='bAA-WO-A' required>
+                                <input class='b1Red' type='radio' name='bwednesday' value='Afwezig' id='bAA-WO-B' required><br>
+                                <label class='B1Color' for='bAA-DO-A'>Donderdag</label>
+                                <input class='b1Green' type='radio' name='bdonday' value='Aanwezig' id='bAA-DO-A' required>
+                                <input class='b1Red' type='radio' name='bdonday' value='Afwezig' id='bAA-DO-B' required><br>
+                                <label class='B1Color' for='bAA-VR-A'>Vrijdag</label>
+                                <input class='b1Green' type='radio' name='bfriday' value='Aanwezig' id='bAA-VR-A' required>
+                                <input class='b1Red' type='radio' name='bfriday' value='Afwezig' id='bAA-VR-B' required><br>
+                                <br>
+                                <p style='color: var(--fg)'>Kies een student</p>
                                 ";
+                                $sele = mysqli_query($server, " SELECT * FROM `users` WHERE company = $company AND perm = 1;");
                                 $eid = mysqli_num_rows($selt);
                                 $counter = 0;
                                 if ($eid > 0) {
                                     while ($result = mysqli_fetch_assoc($sele)) {
                                         echo "
-                                               <label for='bselectedstudent'>".$result['username']."</label>
+                                               <label style='color: var(--fg)' for='bselectedstudent'>".$result['username']."</label>
                                                <input type='radio' value='".$result['username']."' name='bselectedstudent' required><br>
                                                ";
                                     }
                                 }
                             echo "
-                                <input type='submit' value='Submit' name='baanwezigheidsubmit'>
+                                <input type='submit' class='b1Submit' value='Submit' name='baanwezigheidsubmit'>
                             </form>
                         </div>
                         <div id='appB2' class='appB2 div_Away'>
-                          <div class='div_Show' id='appB2UserSel'>
+                          <div class='div_Show appB0sizefix' id='appB2UserSel'>
                             <form method='post'>
                             ";
+                                $selx = mysqli_query($server, " SELECT * FROM `users` WHERE company = $company AND perm = 1;");
                                 $tid = mysqli_num_rows($selx);
                                 if($tid>0) {
                                     while($result=mysqli_fetch_assoc($selx)) {
                                         echo "
-                                              <input name='beditsel' type='submit' value='".$result['username']."'>
+                                              <input class='appB2user' name='beditsel' type='submit' value='".$result['username']."'>
                                           ";
                                     }
                                 }
@@ -248,9 +257,10 @@ global $WerktijdWeek;
                             </form>
                           </div>
                           <div class='div_Away' id='appB2Feedback'>
+                            <h1 class='s1Label'>Feedback</h1>
                             <form method='post' action='../utils/php/b_SubmitFeedback.php'>
-                                <textarea name='feedback'></textarea>
-                                <input type='submit' value='Submit'>
+                                <textarea class='leerdoel' name='feedback'></textarea>
+                                <input class='s1Submit' type='submit' value='Submit'>
                             </form>
                           </div>
                           ";
@@ -281,11 +291,12 @@ global $WerktijdWeek;
                                 <div id='B3StudSel' class='B3ReviewStudSel div_Away'>
                                     <form method='post'>
                                          ";
-                                         $result = mysqli_num_rows($selxx);
+                                        $selxx = mysqli_query($server, "SELECT * FROM users WHERE done = '2' AND company = $company AND perm = 1;");
+                                        $result = mysqli_num_rows($selxx);
                                          if($result>0) {
                                              while($result=mysqli_fetch_assoc($selxx)) {
                                                  echo "
-                                                     <input type='submit' name='B3SelectedUser' value=".$result['username']."></input>
+                                                     <input type='submit' class='b4Submit' name='B3SelectedUser' value=".$result['username']."></input>
                                                  ";
                                              }
                                          }
@@ -300,59 +311,59 @@ global $WerktijdWeek;
                     echo "
                             <div id='B3ReviewField' class='B3ReviewField div_Away'>
                             "; echo "
-                                            <div class='B3ReviewForm'>
+                                            <div class='B3ReviewForm appB0sizefix'>
                                                 <form method='post' action='../utils/php/b_SubmitBeoordeling.php'>
                                                     <label style='color: var(--fg)' for='aanwezigheid'>Aanwezigheid</label>
-                                                    <input type='radio' name='aanwezigheid' value='O'>
-                                                    <input type='radio' name='aanwezigheid' value='V'>
-                                                    <input type='radio' name='aanwezigheid' value='G'>
+                                                    <input class='b3O' type='radio' name='aanwezigheid' value='O'>
+                                                    <input class='b3V' type='radio' name='aanwezigheid' value='V'>
+                                                    <input class='b3G' type='radio' name='aanwezigheid' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='luister'>Luisterd goed / Volgt aanwijzigen</label>
-                                                    <input type='radio' name='luister' value='O'>
-                                                    <input type='radio' name='luister' value='V'>
-                                                    <input type='radio' name='luister' value='G'>
+                                                    <input class='b3O' type='radio' name='luister' value='O'>
+                                                    <input class='b3V' type='radio' name='luister' value='V'>
+                                                    <input class='b3G' type='radio' name='luister' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='hulpraad'>Vraagt tijdig om hulp/raad</label>
-                                                    <input type='radio' name='hulpraad' value='O'>
-                                                    <input type='radio' name='hulpraad' value='V'>
-                                                    <input type='radio' name='hulpraad' value='G'>
+                                                    <input class='b3O' type='radio' name='hulpraad' value='O'>
+                                                    <input class='b3V' type='radio' name='hulpraad' value='V'>
+                                                    <input class='b3G' type='radio' name='hulpraad' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='verantwoordelijk'>Verantwoordelijkheidsgevoel</label>
-                                                    <input type='radio' name='verantwoordelijk' value='O'>
-                                                    <input type='radio' name='verantwoordelijk' value='V'>
-                                                    <input type='radio' name='verantwoordelijk' value='G'>
+                                                    <input class='b3O' type='radio' name='verantwoordelijk' value='O'>
+                                                    <input class='b3V' type='radio' name='verantwoordelijk' value='V'>
+                                                    <input class='b3G' type='radio' name='verantwoordelijk' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='plezier'>Werkt met plezier</label>
-                                                    <input type='radio' name='plezier' value='O'>
-                                                    <input type='radio' name='plezier' value='V'>
-                                                    <input type='radio' name='plezier' value='G'>
+                                                    <input class='b3O' type='radio' name='plezier' value='O'>
+                                                    <input class='b3V' type='radio' name='plezier' value='V'>
+                                                    <input class='b3G' type='radio' name='plezier' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='klantgericht'>Klantgericht en vriendelijk</label>
-                                                    <input type='radio' name='klantgericht' value='O'>
-                                                    <input type='radio' name='klantgericht' value='V'>
-                                                    <input type='radio' name='klantgericht' value='G'>
+                                                    <input class='b3O' type='radio' name='klantgericht' value='O'>
+                                                    <input class='b3V' type='radio' name='klantgericht' value='V'>
+                                                    <input class='b3G' type='radio' name='klantgericht' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='werktempo'>Werktempo</label>
-                                                    <input type='radio' name='werktempo' value='O'>
-                                                    <input type='radio' name='werktempo' value='V'>
-                                                    <input type='radio' name='werktempo' value='G'>
+                                                    <input class='b3O' type='radio' name='werktempo' value='O'>
+                                                    <input class='b3V' type='radio' name='werktempo' value='V'>
+                                                    <input class='b3G' type='radio' name='werktempo' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='uitvoer'>Voert opgedragen werk uit</label>
-                                                    <input type='radio' name='uitvoer' value='O'>
-                                                    <input type='radio' name='uitvoer' value='V'>
-                                                    <input type='radio' name='uitvoer' value='G'>
+                                                    <input class='b3O' type='radio' name='uitvoer' value='O'>
+                                                    <input class='b3V' type='radio' name='uitvoer' value='V'>
+                                                    <input class='b3G' type='radio' name='uitvoer' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='vaardigheid'>Vaardigheid met IT Software / tools</label>
-                                                    <input type='radio' name='vaardigheid' value='O'>
-                                                    <input type='radio' name='vaardigheid' value='V'>
-                                                    <input type='radio' name='vaardigheid' value='G'>
+                                                    <input class='b3O' type='radio' name='vaardigheid' value='O'>
+                                                    <input class='b3V' type='radio' name='vaardigheid' value='V'>
+                                                    <input class='b3G' type='radio' name='vaardigheid' value='G'>
                                                     <br>
                                                     <label style='color: var(--fg)' for='initatief'>Toont initatief</label>
-                                                    <input type='radio' name='initatief' value='O'>
-                                                    <input type='radio' name='initatief' value='V'>
-                                                    <input type='radio' name='initatief' value='G'>
+                                                    <input class='b3O' type='radio' name='initatief' value='O'>
+                                                    <input class='b3V' type='radio' name='initatief' value='V'>
+                                                    <input class='b3G' type='radio' name='initatief' value='G'>
                                                     <br>
-                                                    <input type='submit' value='Submit'>
+                                                    <input class='b1Submit' type='submit' value='Submit'>
                                                 </form>
                                             </div>
                                          ";
@@ -388,14 +399,15 @@ global $WerktijdWeek;
                     </div>
                     <div id='appUIContent'>
                         <div id='appD0' class='appD0 div_Show'>
-                            <div class='div_Show' id='dwerktijdsel'>
+                            <div class='div_Show appB0sizefix' id='dwerktijdsel'>
                                 <form method='post' action='./index.php'>
                                 ";
+                                    $selt = mysqli_query($server, " SELECT * FROM `users` WHERE perm != 3");
                                     $tid = mysqli_num_rows($selt);
                                     if($tid>0) {
                                         while($result=mysqli_fetch_assoc($selt)) {
                                             echo "
-                                                  <input name='dstudent' type='submit' value='".$result['username']."'>
+                                                  <input class='b1Submit' name='dstudent' type='submit' value='".$result['username']."'>
                                               ";
                                         }
                                     }
@@ -472,14 +484,14 @@ global $WerktijdWeek;
                                         echo "
                     </div>
                     <div id='appD1' class='appD1 div_Away'>
-                        <div id='dFeedbackuser' class='div_Show'>
+                        <div id='dFeedbackuser' class='div_Show appB0sizefix'>
                             <form method='post' action='./index.php'>
                             ";
                                 $tid = mysqli_num_rows($selp);
                                 if($tid>0) {
                                     while($result=mysqli_fetch_assoc($selp)) {
                                         echo "
-                                              <input name='dfeedback' type='submit' value='".$result['student']."'>
+                                              <input name='dfeedback' class='b1Submit' type='submit' value='".$result['student']."'>
                                           ";
                                     }
                                 }
@@ -504,7 +516,9 @@ global $WerktijdWeek;
                                 <form method='post' action='./index.php'>
                                     ";
                                     $leerdoel = $_SESSION['d1releerdoel'];
-                                    echo "<p>$leerdoel</p>";
+                                    echo "<h1 style='color: var(--fg)'>Leerdoel Student:</h1>";
+                                    echo "<br>";
+                                    echo "<p style='color: var(--nord10)'>$leerdoel</p>";
                                     echo "
                                 </form>
                             </div>
@@ -512,7 +526,9 @@ global $WerktijdWeek;
                                 <form method='post' action='./index.php'>
                                     ";
                                     $feedback = $_SESSION['d1refeedback'];
-                                    echo "<p>$feedback</p>";
+                                    echo "<h1 style='color: var(--fg)'>Feedback stage begeleider:</h1>";
+                                    echo "<br>";
+                                    echo "<p style='color: var(--nord10)'>$feedback</p>";
                                     echo " 
                                 </form>
                         </div>
@@ -566,20 +582,20 @@ global $WerktijdWeek;
                         </div>
                         <div id='d2EditUsers' class='d2EditUsers div_Away'>
                                 <div class='centerTag'><p style='color: var(--fg)'>Verander een Gebruiker</p></div>
-                            <div id='editUserSel' class='d2EditSelUser div_Show'>
+                            <div id='editUserSel' class='d2EditSelUser div_Show centerTag'>
                                 ";
                                 $eid=mysqli_num_rows($selo);
                                 if($eid>0) {
                                     while ($result=mysqli_fetch_assoc($selo)) {
                                         echo "
-                                        <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>";
+                                        <button class='d2Submit'><a style='text-decoration: none; color: inherit' href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a></button>";
                                         $_SESSION['editSelID'] = $result['id'];
                                    }}
                                 echo "
                             </div>
                         </div>
                         <div id='d2DeleteUsers' class='d2DeleteUsers div_Away'>
-                            <div class='centerTag'><h1 style='color: var(--fg)'>Verwijder een Gebruiker</h1></div>
+                            <div class='centerTag'><p style='color: var(--fg)'>Verwijder een Gebruiker</p></div>
                             <div class='d2EditSelUser'>
                                 <form method='post'>
                                    ";
@@ -587,7 +603,7 @@ global $WerktijdWeek;
                                 if($did>0) {
                                     while ($result=mysqli_fetch_assoc($seld)) {
                                         echo "
-                                            <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']." class=d2EditSelArray'>".$result['username']."</a></div>
+                                            <div class='centerTag'><button class='d2Submit'><a style='color: var(--fg)' href='../utils/php/d_DeleteUser.php?username=".$result['username']." class=d2EditSelArray'>".$result['username']."</a></button></div>
                                         ";
                                     }
                                 }
@@ -596,9 +612,12 @@ global $WerktijdWeek;
                            </div>
                         </div>
                         <div id='companyAdd' class='d2DeleteUsers div_Away'>
+                            <div class='centerTag'><p style='color: var(--fg)'>Voeg een bedrijf toe</p></div>
                             <form method='post' action='../utils/php/d_AddCompany.php'>
-                                <input type='text' name='company'>
-                                <input type='submit' value='Submit' name='companysubmit'>
+                                <br>
+                                <input class='centerTag' type='text' name='company' placeholder='Summa College BV'>
+                                <br>
+                                <input class='centerTag d2Submit' type='submit' value='Submit' name='companysubmit'>
                             </form>
                         </div>
                     </div>
