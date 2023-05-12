@@ -42,9 +42,6 @@ global $WerktijdWeek;
                 <button class="appUIBtnStyle"
                     onclick="window.location.href='../utils/php/logout.php'">Uitloggen</button>
             </div>
-            <div class="btnHolderSettings">
-                <button class="appUIBtnStyle" onclick="alert('Nein')">Color</button>
-            </div>
         </div>
         <div id="appLogoBranding">
             <div class="centerTag"><h1 class="mainHeader">Hybride Projects</h1></div>
