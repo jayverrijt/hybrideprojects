@@ -59,20 +59,23 @@ global $WerktijdWeek;
                     </div>
                     <div id='appUIContent'>
                         <div id='appS0' class='appS0 div_Show'>
-                            <div class='ioClockFrame'>
+                            <div class='ioClockFrame centerClock'>
                                 <form method='post' action='post/'>
-                                    <input type='submit' value='Inklokken'> 
+                                    <input type='submit' value='Inklokken' class='inKlokbuttn'> 
                                 </form>
                             </div> 
                         </div>
                         <div id='appS1' class='appS1 div_Away'>
                             <form>
-                                <label for='leerdoel'>Leerdoel</label>
-                                <textarea id='leerdoel' name='leerdoel'></textarea>
-                                <input type='submit' value='Submit' name='doelsubmit'>
+                                <label for='leerdoel' class='studFont'>Leerdoel</label>
+                                <br>
+                                <textarea id='leerdoel' name='leerdoel' class='studLeerdoel'></textarea>
+                                <br>
+                                <input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
                             </form> 
                         </div>
-                        <div id='appS2' class='appS2 div_Away'>";
+                        <div id='appS2' class='appS2 div_Away'>
+                          <h1 class=studFont>Gewerkte Uren</h1>";
                             $seltest = mysqli_query($server, "SELECT `date`, `start`, `end` FROM `time` WHERE id = '$id'");
                             $tid = mysqli_num_rows($seltest);
                             if($tid>0) {
@@ -106,13 +109,13 @@ global $WerktijdWeek;
                     <div id='appUIContent'>
                         <div id='appB0' class='appB0 div_Show'>
                             <div class='div_Show' id='appD0studentsel'>
-                                <form method='post' action='./'>
+                                <form method='post' action='./' class='appFormFix'>
                                 ";
                                     $sely = mysqli_query($server, " SELECT * FROM `werktijden`");
                                     $tid = mysqli_num_rows($sely);
                                     if($tid>0) {
                                         while($result=mysqli_fetch_assoc($sely)) {
-                                            echo "<input name='bselapp0' type='submit' value='".$result['student']."'>";
+                                            echo "<input name='bselapp0' type='submit' class='newBtnStyle' value='".$result['student']."'>";
                                         }
                                     }
                         echo "
@@ -199,45 +202,49 @@ global $WerktijdWeek;
                         </div>
                         <div id='appB1' class='appB1 div_Away'>
                             <form action='../utils/php/b_SubmitAanwezigheid.php' method='post'>
-                                <label for='bAA-MA-A'>Maandag</label>
+                                <p class='studFont'>Aanwezigheid:</p>
+                                <label style='color: var(--fg)' for='bAA-MA-A'>Maandag</label>
                                 <input type='radio' name='bmonday' value='Aanwezig' id='bAA-MA-A' required>
                                 <input type='radio' name='bmonday' value='Afwezig' id='bAA-MA-B' required><br>
-                                <label for='bAA-DI-A'>Dinsdag</label>
+                                <label style='color: var(--fg)' for='bAA-DI-A'>Dinsdag</label>
                                 <input type='radio' name='bthuesday' value='Aanwezig' id='bAA-DI-A' required>
                                 <input type='radio' name='bthuesday' value='Afwezig' id='bAA-DI-B' required><br>
-                                <label for='bAA-WO-A'>Woensdag</label>
+                                <label style='color: var(--fg)' for='bAA-WO-A'>Woensdag</label>
                                 <input type='radio' name='bwednesday' value='Aanwezig' id='bAA-WO-A' required>
                                 <input type='radio' name='bwednesday' value='Afwezig' id='bAA-WO-B' required><br>
-                                <label for='bAA-DO-A'>Donderdag</label>
+                                <label style='color: var(--fg)' for='bAA-DO-A'>Donderdag</label>
                                 <input type='radio' name='bdonday' value='Aanwezig' id='bAA-DO-A' required>
                                 <input type='radio' name='bdonday' value='Afwezig' id='bAA-DO-B' required><br>
-                                <label for='bAA-VR-A'>Vrijdag</label>
+                                <label style='color: var(--fg)' for='bAA-VR-A'>Vrijdag</label>
                                 <input type='radio' name='bfriday' value='Aanwezig' id='bAA-VR-A' required>
                                 <input type='radio' name='bfriday' value='Afwezig' id='bAA-VR-B' required><br>
+                                <br>
+                                <p class='studFont'>Student:</p>
                                 ";
                                 $eid = mysqli_num_rows($selt);
                                 $counter = 0;
                                 if ($eid > 0) {
                                     while ($result = mysqli_fetch_assoc($sele)) {
                                         echo "
-                                               <label for='bselectedstudent'>".$result['username']."</label>
+                                               <label for='bselectedstudent' style='color: var(--fg)'>".$result['username']."</label>
                                                <input type='radio' value='".$result['username']."' name='bselectedstudent' required><br>
                                                ";
                                     }
                                 }
                             echo "
-                                <input type='submit' value='Submit' name='baanwezigheidsubmit'>
+                                <br>
+                                <input type='submit' value='Submit' class='newBtnStyle' name='baanwezigheidsubmit'>
                             </form>
                         </div>
                         <div id='appB2' class='appB2 div_Away'>
                           <div class='div_Show' id='appB2UserSel'>
-                            <form method='post'>
+                            <form method='post' class='appFormFix'>
                             ";
                                 $tid = mysqli_num_rows($selx);
                                 if($tid>0) {
                                     while($result=mysqli_fetch_assoc($selx)) {
                                         echo "
-                                              <input name='beditsel' type='submit' value='".$result['username']."'>
+                                              <input name='beditsel' class='newBtnStyle' type='submit' value='".$result['username']."'>
                                           ";
                                     }
                                 }
@@ -276,13 +283,13 @@ global $WerktijdWeek;
                                     <p>Test</p>
                                 </div>
                                 <div id='B3StudSel' class='B3ReviewStudSel div_Away'>
-                                    <form method='post'>
+                                    <form method='post' class='appFormFix'>
                                          ";
                                          $result = mysqli_num_rows($selxx);
                                          if($result>0) {
                                              while($result=mysqli_fetch_assoc($selxx)) {
                                                  echo "
-                                                     <input type='submit' name='B3SelectedUser' value=".$result['username']."></input>
+                                                     <div class='centerTag'><input type='submit' name='B3SelectedUser' class='newBtnStyle3' value=".$result['username']."></input></div>
                                                  ";
                                              }
                                          }
@@ -386,13 +393,13 @@ global $WerktijdWeek;
                     <div id='appUIContent'>
                         <div id='appD0' class='appD0 div_Show'>
                             <div class='div_Show' id='dwerktijdsel'>
-                                <form method='post' action='./index.php'>
+                                <form method='post' style='height: 100%; width: 100%; position: absolute' action='./index.php'>
                                 ";
                                     $tid = mysqli_num_rows($selt);
                                     if($tid>0) {
                                         while($result=mysqli_fetch_assoc($selt)) {
                                             echo "
-                                                  <input name='dstudent' type='submit' value='".$result['username']."'>
+                                                  <input class='newBtnStyle' name='dstudent' type='submit' value='".$result['username']."'>
                                               ";
                                         }
                                     }
@@ -476,7 +483,8 @@ global $WerktijdWeek;
                                 if($tid>0) {
                                     while($result=mysqli_fetch_assoc($selp)) {
                                         echo "
-                                              <input name='dfeedback' type='submit' value='".$result['student']."'>
+                                              <input class='newBtnStyle' name='dfeedback' type='submit' value='".$result['student']."'>
+                                              <br>
                                           ";
                                     }
                                 }
@@ -501,7 +509,8 @@ global $WerktijdWeek;
                                 <form method='post' action='./index.php'>
                                     ";
                                     $leerdoel = $_SESSION['d1releerdoel'];
-                                    echo "<p>$leerdoel</p>";
+                                    echo "<h2 style='color: var(--fg)'>Leerdoel van Student</h2>";
+                                    echo "<p style='color: var(--nord10)'>$leerdoel</p>";
                                     echo "
                                 </form>
                             </div>
@@ -509,10 +518,20 @@ global $WerktijdWeek;
                                 <form method='post' action='./index.php'>
                                     ";
                                     $feedback = $_SESSION['d1refeedback'];
-                                    echo "<p>$feedback</p>";
+                                    echo "<h2 style='color: var(--fg)'>Feedback van Begeleider</h2>";
+                                    echo "<p style='color: var(--nord10)'>$feedback</p>";
                                     echo " 
                                 </form>
-                        </div>
+                            </div>
+                            <div class='d1Back div_Show'>
+                            <form method='post' style='height: 100%'>
+                              <input type='submit' value='Terug' class='newBtnStyle' style='height:100%' name='dbackbtn'>
+                            </form>";
+                                if (isset($_POST['dbackbtn'])) {
+                                  unset($_SESSION['dapp1feedback']);
+                                }
+                               echo " 
+                            </div>
                     </div>
                     ";
                     if (isset($_SESSION['dapp1feedback'])) {
@@ -562,29 +581,29 @@ global $WerktijdWeek;
                             </div>
                         </div>
                         <div id='d2EditUsers' class='d2EditUsers div_Away'>
-                                <div class='centerTag'><p style='color: var(--fg)'>Verander een Gebruiker</p></div>
+                                <div class='centerTag'><p style='color: var(--fg); font-size: 24px'>Verander een Gebruiker</p></div>
                             <div id='editUserSel' class='d2EditSelUser div_Show'>
                                 ";
                                 $eid=mysqli_num_rows($selo);
                                 if($eid>0) {
                                     while ($result=mysqli_fetch_assoc($selo)) {
                                         echo "
-                                        <a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a>";
+                                        <div class='centerTag'><button class='newBtnStyle3'><a href='../utils/php/d_EditUser.php?id=".$result['id']."'>".$result['username']."</a></button></div>";
                                         $_SESSION['editSelID'] = $result['id'];
                                    }}
                                 echo "
                             </div>
                         </div>
                         <div id='d2DeleteUsers' class='d2DeleteUsers div_Away'>
-                            <div class='centerTag'><h1 style='color: var(--fg)'>Verwijder een Gebruiker</h1></div>
-                            <div class='d2EditSelUser'>
+                            <div class='centerTag'><p style='color: var(--fg); font-size: 24px'>Verwijder een Gebruiker</p></div>
+                            <div class='d2EditSelUser' style='margin-top: 5%'>
                                 <form method='post'>
                                    ";
                                 $did=mysqli_num_rows($seld);
                                 if($did>0) {
                                     while ($result=mysqli_fetch_assoc($seld)) {
                                         echo "
-                                            <div class='centerTag'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']." class=d2EditSelArray'>".$result['username']."</a></div>
+                                            <div class='centerTag'><button class='newBtnStyle2'><a href='../utils/php/d_DeleteUser.php?username=".$result['username']." class=d2EditSelArray'>".$result['username']."</a></button></div>
                                         ";
                                     }
                                 }
@@ -592,10 +611,11 @@ global $WerktijdWeek;
                                 </form>
                            </div>
                         </div>
-                        <div id='companyAdd' class='d2DeleteUsers div_Away'>
-                            <form method='post' action='../utils/php/d_AddCompany.php'>
-                                <input type='text' name='company'>
-                                <input type='submit' value='Submit' name='companysubmit'>
+                        <div id='companyAdd' class='d2addCompany div_Away'>
+                            <div class='centerTag'><p style='color: var(--fg); font-size: 24px'>Voeg een bedrijf toe</p></div>
+                            <form method='post' action='../utils/php/d_AddCompany.php' style='margin-top: 5%'>
+                                <input type='text' name='company' class='centerTag d2AddUserFormBtnStyle'>
+                                <input type='submit' value='Submit' name='companysubmit' class='centerTag newBtnStyle2' style='margin-top: 2%'>
                             </form>
                         </div>
                     </div>
