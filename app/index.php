@@ -35,7 +35,7 @@ global $WerktijdWeek;
     <link rel="stylesheet" href="../global.css">
     <link rel="shortcut icon" href="../utils/favicon.png">
 </head>
-<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit(); B3StudSel()">
+<body onload="ioDemoInit(); toggleUserAdd(); toggleCompanyAdd(); toggleUserDel(); toggleUserEdit(); B3StudSel();">
     <div id="appUIbody" class="appUIBody div_Away blur_Off">
         <div id="appUIuser" class="appUIUser">
             <div class="btnHolderAccount">
@@ -60,18 +60,24 @@ global $WerktijdWeek;
                     <div id='appUIContent'>
                         <div id='appS0' class='appS0 div_Show'>
                             <div class='ioClockFrame centerClock'>
-                                <form method='post' action='post/'>
+                                <form method='post' action='clock/'>
                                     <input type='submit' value='Inklokken' class='inKlokbuttn'> 
                                 </form>
                             </div> 
                         </div>
                         <div id='appS1' class='appS1 div_Away'>
-                            <form>
-                                <label for='leerdoel' class='studFont'>Leerdoel</label>
-                                <br>
-                                <textarea id='leerdoel' name='leerdoel' class='studLeerdoel'></textarea>
-                                <br>
-                                <input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
+                            <form method='post' action='../utils/php/s_SubmitDoel.php'>
+                                <label for='leerdoel' class='studFont'>Leerdoel</label><br>";
+                                  $s1Fetch = mysqli_query($server, "SELECT leerdoel FROM leerdoel WHERE student = $user");
+                                  $wid = mysqli_num_rows($s1Fetch);
+                                  if($wid>0) {
+                                    while($result=mysqli_fetch_assoc($s1Fetch)) {
+                                   echo "<textarea id='leerdoel' name='leerdoel' class='studLeerdoel' placeholder='".$result['leerdoel']."'></textarea>";
+                                    }
+                                  } else {
+                                   echo "<textarea id='leerdoel' name='leerdoel' class='studLeerdoel' placeholder='Voer hier je leerdoel in' ></textarea>";
+                                  }
+                                echo "<input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
                             </form> 
                         </div>
                         <div id='appS2' class='appS2 div_Away'>
@@ -280,7 +286,7 @@ global $WerktijdWeek;
                         <div id='appB3' class='appB3 div_Away'>
                             <div id='B3SelScreen' class='div_Show'>
                                 <div class='B3ReviewStudentBtn' onclick='B3StudSel()'>
-                                    <p>Test</p>
+                                  <img src='icons/profile.png' class='btnEndJudge'>
                                 </div>
                                 <div id='B3StudSel' class='B3ReviewStudSel div_Away'>
                                     <form method='post' class='appFormFix'>
@@ -411,6 +417,7 @@ global $WerktijdWeek;
                                      <div class='ioWeekControl'>
                                         <p class='ioWeekNumber centerTag'>"; echo "Week ".$WerktijdWeek."</p>
                                      </div>
+                                    <form method='post' action='../utils/php/d_SubmitWorkhrs.php'>
                                      <div class='ioWorkHours'>
                                         <div class='ioWorkHours-Days'>
                                             <div id='ioWorkDayMon'>
@@ -454,6 +461,7 @@ global $WerktijdWeek;
                                         <div class='ioWorkhrsSubmit'>
                                             <input name='Workhrs' type='submit' value='Bevestigen' class='ioWorkhrsSubmitBtn centerTag'>
                                      </div>
+                                    </form>
                                 </div>
                              </div>
                             </div>

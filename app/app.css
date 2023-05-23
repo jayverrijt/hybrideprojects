@@ -802,3 +802,12 @@ textarea {resize: none;}
   width: 100%;
   position: absolute;
 }
+
+.btnEndJudge {
+    position: relative;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(50%);
+}
