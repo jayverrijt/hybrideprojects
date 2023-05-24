@@ -811,3 +811,23 @@ textarea {resize: none;}
     margin-right: auto;
     transform: translateY(50%);
 }
+
+.DelLeerdoelBtn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid 0px;
+    background: var(--nord10);
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    cursor: pointer;
+}
+
+.DelLeerdoelStyleBtn {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  left: 25%;
+  top: 25%;
+}

@@ -79,6 +79,11 @@ global $WerktijdWeek;
                                   }
                                 echo "<input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
                             </form> 
+                            <form method='post' action='index.php'>
+                               <div class='DelLeerdoelBtn' name='test'>
+                                  <img id='d2DeleteIMG' class='DelLeerdoelStyleBtn' src='icons/deleteUser.png' alt='delLeerdoel'>
+                               </div>
+                            </form>
                         </div>
                         <div id='appS2' class='appS2 div_Away'>
                           <h1 class=studFont>Gewerkte Uren</h1>";
