@@ -8,6 +8,7 @@ var appB3 = document.getElementById('appB3');
 var appD0 = document.getElementById('appD0');
 var appD1 = document.getElementById('appD1');
 var appD2 = document.getElementById('appD2');
+var appD3 = document.getElementById('appD3');
 
 var ls0 = document.getElementById('appLS0');
 var ls1 = document.getElementById('appLS1');
@@ -21,6 +22,7 @@ var lb3 = document.getElementById('appLB3');
 var ld0 = document.getElementById('appLD0');
 var ld1 = document.getElementById('appLD1');
 var ld2 = document.getElementById('appLD2');
+var ld3 = document.getElementById('appLD3');
 
 function toAppS0 () {
     appS0.classList.add('div_Show'); appS0.classList.remove('div_Away');
@@ -121,7 +123,11 @@ function toAppD0 () {
     appD2.classList.add('div_Away');
     ld1.classList.remove('active');
     ld2.classList.remove('active');
+    ld3.classList.remove('active');
     ld0.classList.add('active');
+    appD3.classList.remove('div_Show');
+    appD3.classList.add('div_Away');
+  
 }
 
 function toAppD1 () {
@@ -131,8 +137,11 @@ function toAppD1 () {
     appD2.classList.remove('div_Show');
     appD0.classList.add('div_Away');
     appD2.classList.add('div_Away');
+    appD3.classList.remove('div_Show');
+    appD3.classList.add('div_Away');
     ld0.classList.remove('active');
     ld2.classList.remove('active');
+    ld3.classList.remove('active');
     ld1.classList.add('active');
 }
 
@@ -146,4 +155,22 @@ function toAppD2 () {
     ld0.classList.remove('active');
     ld1.classList.remove('active');
     ld2.classList.add('active');
+    appD3.classList.remove('div_Show');
+    appD3.classList.add('div_Away');
+    ld3.classList.remove('active');
+}
+
+function toAppD3 () {
+    appD3.classList.add('div_Show');
+    appD3.classList.remove('div_Away');
+    appD0.classList.remove('div_Show');
+    appD1.classList.remove('div_Show');
+    appD0.classList.add('div_Away');
+    appD1.classList.add('div_Away');
+    appD2.classList.remove('div_Show');
+    appD2.classList.add('div_Away');
+    ld0.classList.remove('active');
+    ld1.classList.remove('active');
+    ld2.classList.remove('active');
+    ld3.classList.add('active');
 }

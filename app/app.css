@@ -726,7 +726,7 @@ a:active { text-decoration: none; }
 #dFeedbackuser {
   height: 100%;
   width: 100%;
-  position: absolute
+  position: absolute;
   border: solid 0px;
 }
 .newBtnStyle3 {
@@ -801,6 +801,8 @@ textarea {resize: none;}
   height: 100%;
   width: 100%;
   position: absolute;
+  top: 0%;
+  left: 0%;
 }
 
 .btnEndJudge {
@@ -830,4 +832,270 @@ textarea {resize: none;}
   width: 50%;
   left: 25%;
   top: 25%;
+}
+
+.B0BackBtn {
+    height: 5%;
+    width: 100%;
+    border: solid 0px;
+    position: absolute;
+    bottom: 0%;
+}
+.B0BackBtnStyle {
+    height: 100%;
+    width: 10%;
+    border: solid 0px;
+    position: absolute;
+    background-color: var(--nord10);
+    border-radius: 25px;
+    color: var(--fg);
+    cursor: pointer;
+    bottom: 0%;
+}
+
+.appD3 {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg);
+    border: solid 0px;
+}
+
+.D3ReviewStudSel {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg);
+    border-radius: 18px;
+    overflow: hidden;
+    float: right;
+    border: solid 0px;
+    position: absolute;
+    bottom: 8%;
+    right: 1%;
+    display: flex;
+}
+
+.D3Form {
+    height: 80%;
+    width: 100%;
+    background-color: var(--bg);
+    border: solid 0px;
+    position: absolute;
+    top: 10%;
+    left: 0%;
+}
+
+.D3FormQ {
+    height: 100%;
+    width: 40%;
+    border: solid 0px;
+    background-color: var(--bg);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.D3FormA {
+    height: 100%;
+    width: 60%;
+    border: solid 0px;
+    background-color: var(--bg);
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+
+.D3FormQ1 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 0%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+
+.docFont {
+  color: var(--fg);
+  font-size: 24px;
+  float: right;
+}
+.D3FormQ2 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 5%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ3 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 10%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ4 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 15%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ5 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 20%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ6 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 25%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ7 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 30%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ8 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 35%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ9 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 40%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormQ10 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 45%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+
+.D3FormA2 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 5%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA3 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 10%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA4 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 15%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA5 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 20%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA6 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 25%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA7 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 30%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA8 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 35%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA9 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 40%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.D3FormA10 {
+    height: 5%;
+    width: 100%;
+    background-color: var(--bg);
+    top: 45%;
+    left: 0%;
+    border: solid 0px;
+    position: absolute;
+}
+.docFont2 {
+  color: var(--fg);
+  margin-left: 2%;
+  font-size: 24px;
+}
+.newBtnStyle8{
+  border: solid 0px;
+  height: 4%;
+  cursor: pointer;
+  color: var(--fg);
+  width: 8%;
+  margin-left: 2%;
+  background-color: var(--nord10);
+  border-radius: 18px;
+  position: absolute;
+  top: 10%;
 }

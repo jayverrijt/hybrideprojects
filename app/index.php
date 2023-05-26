@@ -20,6 +20,7 @@ $selp = mysqli_query($server, " SELECT * FROM `leerdoel`");
 $selx = mysqli_query($server, " SELECT * FROM `users`");
 $selx = mysqli_query($server, " SELECT * FROM `users`");
 $selxx = mysqli_query($server, "SELECT * FROM users WHERE done = '2'");
+$selxxx = mysqli_query($server, "SELECT * FROM users WHERE done = '2'");
 $selz = mysqli_query($server, " SELECT * FROM `users`");
 $selcompany = mysqli_query($server, " SELECT * FROM `company`");
 $selt = mysqli_query($server, " SELECT * FROM `users`");
@@ -79,11 +80,11 @@ global $WerktijdWeek;
                                   }
                                 echo "<input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
                             </form> 
-                            <form method='post' action='index.php'>
                                <div class='DelLeerdoelBtn' name='test'>
-                                  <img id='d2DeleteIMG' class='DelLeerdoelStyleBtn' src='icons/deleteUser.png' alt='delLeerdoel'>
+                                  <form method='post' action='../utils/php/s_DeleteDoel.php'>
+                                    <input type='image' src='icons/deleteUser.png' alt='Delete Leerdoel' class='DelLeerdoelStyleBtn'>
+                                  </form>
                                </div>
-                            </form>
                         </div>
                         <div id='appS2' class='appS2 div_Away'>
                           <h1 class=studFont>Gewerkte Uren</h1>";
@@ -194,6 +195,7 @@ global $WerktijdWeek;
                                         </div>
                                     </div>
                                 </div>
+ 
                             ";
                             if(isset($_SESSION['bselapp0'])) {
                                 echo "
@@ -208,8 +210,15 @@ global $WerktijdWeek;
                             ";
                             }
                             echo "    
-                                
-                            </div>
+                                <form method='post' class='B0BackBtn'>
+                                    <input type='submit' name='B0BackBtn' class='B0BackBtnStyle' value='Terug'>
+                                </form>
+                                ";
+                                if (isset($_POST['B0BackBtn'])) {
+                                    unset($_SESSION['bselapp0']);
+                                }
+                                 echo "
+                        </div>
                         </div>
                         <div id='appB1' class='appB1 div_Away'>
                             <form action='../utils/php/b_SubmitAanwezigheid.php' method='post'>
@@ -264,10 +273,19 @@ global $WerktijdWeek;
                           </div>
                           <div class='div_Away' id='appB2Feedback'>
                             <form method='post' action='../utils/php/b_SubmitFeedback.php'>
-                                <textarea name='feedback'></textarea>
-                                <input type='submit' value='Submit'>
-                            </form>
-                          </div>
+                                <label for='feedback' class='studFont'>Feedback op Student</label><br>";
+                                  $s1Fetch = mysqli_query($server, "SELECT feedback FROM leerdoel WHERE student = $user");
+                                  $wid = mysqli_num_rows($s1Fetch);
+                                  if($wid>0) {
+                                    while($result=mysqli_fetch_assoc($s1Fetch)) {
+                                   echo "<textarea id='feedback' name='feedback' class='studLeerdoel' placeholder='".$result['feedback']."'></textarea>";
+                                    }
+                                  } else {
+                                   echo "<textarea id='feedback' name='feedback' class='studLeerdoel' placeholder='Voer hier je feedback in' ></textarea>";
+                                  }
+                                echo "<input type='submit' value='Submit' class='newBtnStyle5'name='doelsubmit'>
+                            </form> 
+                        </div>
                           ";
                             if(isset($_POST['beditsel'])) {
                                 $_SESSION['appB2user'] = $_POST['beditsel'];
@@ -287,6 +305,15 @@ global $WerktijdWeek;
                                 ";
                             }
                                 echo "
+                                <form method='post' class='B0BackBtn'>
+                                    <input type='submit' name='B2BackBtn' class='B0BackBtnStyle' value='Terug'>
+                                </form>
+                                ";
+                                if (isset($_POST['B2BackBtn'])) {
+                                    unset($_SESSION['appB2user']);
+                                }
+                                 echo "
+ 
                         </div>
                         <div id='appB3' class='appB3 div_Away'>
                             <div id='B3SelScreen' class='div_Show'>
@@ -367,7 +394,7 @@ global $WerktijdWeek;
                                                     <input type='radio' name='initatief' value='V'>
                                                     <input type='radio' name='initatief' value='G'>
                                                     <br>
-                                                    <input type='submit' value='Submit'>
+                                                    <input type='submit' class='newBtnStyle5' value='Submit'>
                                                 </form>
                                             </div>
                                          ";
@@ -399,6 +426,7 @@ global $WerktijdWeek;
                             <a onclick='toAppD0()' id='appLD0' class='active'>Werktijden</a>
                             <a onclick='toAppD1()' id='appLD1'>Ontvangen Feedbacks</a>
                             <a onclick='toAppD2()' id='appLD2'>Gebruikers</a>
+                            <a onclick='toAppD3()' id='appLD3'>Algemene Beoordelingen</a>
                         </div>
                     </div>
                     <div id='appUIContent'>
@@ -538,7 +566,7 @@ global $WerktijdWeek;
                             </div>
                             <div class='d1Back div_Show'>
                             <form method='post' style='height: 100%'>
-                              <input type='submit' value='Terug' class='newBtnStyle' style='height:100%' name='dbackbtn'>
+                              <input type='submit' value='Terug' class='newBtnStyle' style='height:100%' name='dbackbtn'>
                             </form>";
                                 if (isset($_POST['dbackbtn'])) {
                                   unset($_SESSION['dapp1feedback']);
@@ -631,9 +659,92 @@ global $WerktijdWeek;
                                 <input type='submit' value='Submit' name='companysubmit' class='centerTag newBtnStyle2' style='margin-top: 2%'>
                             </form>
                         </div>
+                    <div id='appD3' class='appD3 div_Away'>
+                                <div id='D3StudSel' class='D3ReviewStudSel div_Show'>
+                                    <form method='post' class='appFormFix'>
+                                         ";
+                                         $result = mysqli_num_rows($selxxx);
+                                         if($result>0) {
+                                             while($result=mysqli_fetch_assoc($selxxx)) {
+                                                 echo "
+                                                    <div><input type='submit' name='D3SelectedUser' class='newBtnStyle8' value=".$result['username']."></input></div>
+                                                 ";
+                                             }
+                                         }
+                                echo "
+                                    </form>
+                                </div>
+                                ";
+                                    if (isset($_POST['D3SelectedUser'])) {
+                                        $_SESSION['D3SelectedUser'] = $_POST['D3SelectedUser'];
+                                    }
+                                 echo "
+                                <div id='D3StudForm' class='div_Away'>
+                                <div class='D3Form'>
+                                    <div class='D3FormQ'>
+                                        <div class='D3FormQ1'><p class='docFont'>Aanwezigheid</p></div>
+                                        <div class='D3FormQ2'><p class='docFont'>Luisterd Goed / Volgt Aanwijzigen</p></div>
+                                        <div class='D3FormQ3'><p class='docFont'>Vraagt tijdig om hulp / raad</p></div>
+                                        <div class='D3FormQ4'><p class='docFont'>Verantwoordelijkheidsgevoel</p></div>
+                                        <div class='D3FormQ5'><p class='docFont'>Werkt met plezier</p></div>
+                                        <div class='D3FormQ6'><p class='docFont'>Klantgericht en Vriendelijke</p></div>
+                                        <div class='D3FormQ7'><p class='docFont'>Werktempo</p></div>
+                                        <div class='D3FormQ8'><p class='docFont'>Voert opgedragen werk uit</p></div>
+                                        <div class='D3FormQ9'><p class='docFont'>Vaardig met IT tools/software</p></div>
+                                        <div class='D3FormQ10'><p class='docFont'>Toont Initatief</p></div>
+                                    </div>
+                                    ";
+                                    $d2User = $_SESSION['D3SelectedUser'];
+                                    $dFetch = mysqli_query($server, "SELECT * FROM `beoordeling` WHERE `student` = '$d2User'");
+                                    $result = mysqli_num_rows($dFetch);
+                                    if($result>0) {
+                                        while ($result=mysqli_fetch_assoc($dFetch)) {
+                                            echo "
+                                                <div class='D3FormA'>
+                                                    <div class='D3FormA1'><p class='docFont2'>".$result['aanwezigheid']."</p></div>
+                                                    <div class='D3FormA2'><p class='docFont2'>".$result['luister']."</p></div>
+                                                    <div class='D3FormA3'><p class='docFont2'>".$result['hulpraad']."</p></div>
+                                                    <div class='D3FormA4'><p class='docFont2'>".$result['verantwoordelijk']."</p></div>
+                                                    <div class='D3FormA5'><p class='docFont2'>".$result['plezier']."</p></div>
+                                                    <div class='D3FormA6'><p class='docFont2'>".$result['klantgericht']."</p></div>
+                                                    <div class='D3FormA7'><p class='docFont2'>".$result['werktempo']."</p></div>
+                                                    <div class='D3FormA8'><p class='docFont2'>".$result['uitvoer']."</p></div>
+                                                    <div class='D3FormA9'><p class='docFont2'>".$result['vaardigheid']."</p></div>
+                                                    <div class='D3FormA10'><p class='docFont2'>".$result['initatief']."</p></div>
+                                                </div>
+                                            </div>
+                                            ";
+                                        }
+                                    }
+                                   echo "
+                                <form method='post' class='B0BackBtn'>
+                                    <input type='submit' name='D3BackBtn' class='B0BackBtnStyle' value='Terug'>
+                                </form>
+                                ";
+                                if (isset($_POST['D3BackBtn'])) {
+                                    unset($_SESSION['D3SelectedUser']);
+                                }
+                                 echo "
+ 
+                                </div>
+                                ";
+                                    if (isset($_SESSION['D3SelectedUser'])) {
+                                        echo "
+                                            <script>
+                                                var one = document.getElementById('D3StudSel');
+                                                var two = document.getElementById('D3StudForm');
+                                                one.classList.remove('div_Show');
+                                                one.classList.add('div_Away');
+                                                two.classList.remove('div_Away');
+                                                two.classList.add('div_Show');
+                                            </script>
+                                        ";
+                                    }
+                                echo "
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    </div>
+                </div>
                     ";
                     break;
                 default:

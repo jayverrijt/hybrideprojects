@@ -16,4 +16,5 @@
     $b10 = $_POST['initatief'];
 
    mysqli_query($server, "INSERT INTO beoordeling (student, begeleider, aanwezigheid, luister, hulpraad, verantwoordelijk, plezier, klantgericht, werktempo, uitvoer, vaardigheid, initatief) VALUES ('$student', '$begeleider', '$b1', '$b2', '$b3', '$b4', '$b5', '$b6', '$b7', '$b8', '$b9', '$b10')");
-   header('Location: ../../app/');
+   unset($_SESSION['B3SelUser']);
+   header('Location:../../app/');
