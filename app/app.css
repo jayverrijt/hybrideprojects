@@ -526,6 +526,7 @@ a:active { text-decoration: none; }
     background-color: var(--nord10);
     position: absolute;
     left: 0%;
+    text-align: right;
     display: inline-block;
     top: 0%;
 }
@@ -1098,4 +1099,51 @@ textarea {resize: none;}
   border-radius: 18px;
   position: absolute;
   top: 10%;
+}
+
+.b0Font {
+    color: var(--fg);
+    font-size: 22px;
+    font-style: bold;
+}
+
+.B1Submitbtn{
+    bottom: 0%;
+    right: 0%;
+    position: absolute;
+}
+
+#bAA-MA-A, #bAA-DI-A, #bAA-WO-A, #bAA-DO-A, #bAA-VR-A {
+    accent-color: var(--nord14);
+}
+
+#bAA-MA-B, #bAA-DI-B, #bAA-WO-B, #bAA-DO-B, #bAA-VR-B {
+    accent-color: var(--nord11);
+}
+
+input [type='radio'] {
+    accent-color: var(--nord10);
+}
+
+#B3-1-O, #B3-2-O, #B3-3-O, #B3-4-O, #B3-4-O, #B3-4-O, #B3-5-O, #B3-6-O, #B3-7-O, #B3-8-O, #B3-9-O, #B3-0-O {
+    accent-color: var(--nord11);
+}
+
+#B3-1-V, #B3-2-V, #B3-3-V, #B3-4-V, #B3-4-V, #B3-4-V, #B3-5-V, #B3-6-V, #B3-7-V, #B3-8-V, #B3-9-V, #B3-0-V {
+    accent-color: orange;
+}
+
+#B3-1-G, #B3-2-G, #B3-3-G, #B3-4-G, #B3-4-G, #B3-4-G, #B3-5-G, #B3-6-G, #B3-7-G, #B3-8-G, #B3-9-G, #B3-0-G {
+    accent-color: var(--nord14);
+}
+
+.d2EditSelArrayD {
+    height: 20%;
+    border: solid 1px;
+    width: 100px;
+    background-color: var(--bg);
+    color: inherit; 
+    color: var(--fg);
+    border-color: var(--bg);
+    text-decoration: none;
 }
